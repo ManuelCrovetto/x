@@ -30,7 +30,7 @@ struct XView: View {
                                 .foregroundStyle(Color(.darkGray))
                         }
                     }
-                    Text("Feliz dia, Chile🇨🇱! Cuando invadimos Perú?")
+                    Text("Happy birthday to my cat! 🐈🎉")
                         .font(.footnote)
                         .multilineTextAlignment(.leading)
                     

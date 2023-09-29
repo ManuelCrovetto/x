@@ -13,11 +13,27 @@ struct TextFieldWithError: View {
     @Binding var text: String
     var isError: Bool
     var errorMessage: String
+    var icon: String? = nil
+    
+    @ViewBuilder private var textField: some View {
+        if icon != nil {
+            HStack(spacing: 8) {
+                Image(systemName: icon ?? "")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+                    .foregroundStyle(.gray)
+                TextField(hint, text: $text)
+            }
+        } else {
+            TextField(hint, text: $text)
+        }
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
-            TextField(hint, text: $text)
-                .modifier(XTextFieldsModifiers())
+            textField.modifier(XTextFieldsModifiers())
+            
             if isError {
                 Text(errorMessage)
                     .font(.caption)

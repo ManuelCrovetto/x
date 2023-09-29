@@ -14,8 +14,8 @@
             filePath = "X/Core/Authentication/ViewModel/RegistrationViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "createUser()"
             landmarkType = "7">
          </BreakpointContent>
@@ -167,19 +167,19 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "F28B4BA1-045D-40CB-81F8-45355D5A10A2"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "X/Services/AuthServices.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "login(withEmail:password:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "F28B4BA1-045D-40CB-81F8-45355D5A10A2 - c48ed2f3f5cb62b9"
+                  uuid = "F28B4BA1-045D-40CB-81F8-45355D5A10A2 - c48ed2f3f5cb627f"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -189,57 +189,12 @@
                   urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Services/AuthServices.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "636">
-               </Location>
-               <Location
-                  uuid = "F28B4BA1-045D-40CB-81F8-45355D5A10A2 - 1e68bd71470604ba"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(6) suspend resume partial function for X.AuthServices.login(withEmail: Swift.String, password: Swift.String) async throws -&gt; X.Response&lt;__C.FIRUser&gt;"
-                  moduleName = "X"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Services/AuthServices.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "196">
-               </Location>
-               <Location
-                  uuid = "F28B4BA1-045D-40CB-81F8-45355D5A10A2 - 28329df6d251a6bb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(7) suspend resume partial function for X.AuthServices.login(withEmail: Swift.String, password: Swift.String) async throws -&gt; X.Response&lt;__C.FIRUser&gt;"
-                  moduleName = "X"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Services/AuthServices.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "184">
-               </Location>
-               <Location
-                  uuid = "F28B4BA1-045D-40CB-81F8-45355D5A10A2 - c48ed2f3f5cb6298"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(5) suspend resume partial function for X.AuthServices.login(withEmail: Swift.String, password: Swift.String) async throws -&gt; X.Response&lt;__C.FIRUser&gt;"
-                  moduleName = "X"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Services/AuthServices.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "35"
-                  endingLineNumber = "35"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
                   offsetFromSymbolStart = "616">
                </Location>
                <Location
-                  uuid = "F28B4BA1-045D-40CB-81F8-45355D5A10A2 - 1e68bd714706049b"
+                  uuid = "F28B4BA1-045D-40CB-81F8-45355D5A10A2 - 1e68bd714706047c"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -249,12 +204,12 @@
                   urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Services/AuthServices.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "35"
-                  endingLineNumber = "35"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
                   offsetFromSymbolStart = "196">
                </Location>
                <Location
-                  uuid = "F28B4BA1-045D-40CB-81F8-45355D5A10A2 - 28329df6d251a69a"
+                  uuid = "F28B4BA1-045D-40CB-81F8-45355D5A10A2 - 28329df6d251a67d"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -264,8 +219,8 @@
                   urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Services/AuthServices.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "35"
-                  endingLineNumber = "35"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
                   offsetFromSymbolStart = "184">
                </Location>
             </Locations>
@@ -329,8 +284,8 @@
             filePath = "X/Core/Components/TextFieldWithError.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -345,8 +300,8 @@
             filePath = "X/Core/Authentication/Views/LoginView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -355,14 +310,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "E4984D79-2403-48E5-A50A-F2A0496F07CF"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "X/Services/AuthServices.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "login(withEmail:password:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -387,14 +342,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "7999BA3A-C113-4BE0-A4BB-07378B09876A"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "X/Services/AuthServices.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "login(withEmail:password:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -461,6 +416,22 @@
                   offsetFromSymbolStart = "584">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "968C8854-D2B9-4EFD-B4DE-815C542EE232"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../Library/Developer/Xcode/DerivedData/X-foydyckokkojotcswouxobtjvhsm/SourcePackages/checkouts/firebase-ios-sdk/FirebaseAuth/Sources/Auth/FIRAuth.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1461"
+            endingLineNumber = "1461"
+            landmarkName = "-sendPasswordResetWithNullableActionCodeSettings:email:completion:"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

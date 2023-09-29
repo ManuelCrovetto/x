@@ -1,7 +1,27 @@
 {
   "images" : [
     {
-      "filename" : "X-Logo-500x281.png",
+      "filename" : "X-Logo-500x281 1.png",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "logo-black.png",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "logo-white.png",
       "idiom" : "universal"
     }
   ],

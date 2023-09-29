@@ -11,6 +11,7 @@ import Observation
 @Observable class XTabViewModel {
     
     var isDrawerOpen = false
+    var hasAppearedOnce = false
     
     
 }

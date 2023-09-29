@@ -8,10 +8,12 @@
 import Foundation
 import FirebaseAuth
 import Observation
+import FirebaseFirestore
 
 @Observable class AuthServices {
     
     var userSession: FirebaseAuth.User? = nil
+    private var db = Firestore.firestore()
     
     static let shared = AuthServices()
     
@@ -51,22 +53,51 @@ import Observation
     func createUser(withEmail email: String, password: String, fullname: String, username: String) async throws -> Response<Bool> {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
+            print("\(self): User with email created.")
+            let document = db.collection("users").document(result.user.uid)
+            document.setData([
+                "email": email,
+                "fullname": fullname,
+                "username": username
+            ]) { error in
+                if let error = error {
+                    print("\(self): Error setting user's data. \(error)")
+                } else {
+                    print("User data added.")
+                }
+            }
+            try await db.collection("usernames").document(username).setData([:])
+            print("\(self): Username added...")
             try await sendVerificationEmail(user: result.user)
+            print("\(self): Verification email sent..")
             try Auth.auth().signOut()
-            userSession = nil
             return Response.success(true)
         } catch {
-            print("DEBUG: Failed to create user with error \(error.localizedDescription)")
+            print("\(self): Failed to create user with error \(error.localizedDescription)")
             return Response.error(error.localizedDescription)
         }
     }
     
-    func sendVerificationEmail(user: User) async throws {
+    func resetPassword(email: String, onCompletion: @escaping (Bool) -> ()) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                print("\(self): Error resetting password: Stacktrace: \(error)")
+                onCompletion(false)
+            } else {
+                onCompletion(true)
+                
+            }
+        }
+    }
+    
+    private func sendVerificationEmail(user: User) async throws {
         do {
             try await user.sendEmailVerification()
         } catch {
-            print("DEBUG: Sending email verification failed.")
+            print("\(self): Sending email verification failed.")
         }
         
     }
+    
+
 }

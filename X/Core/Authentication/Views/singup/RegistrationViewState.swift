@@ -17,6 +17,7 @@ struct RegistrationViewState: Equatable {
     let emailError: String
     let passwordError: String
     
+    
     init(loading: Bool = false, networkError: Bool = false, fieldsError: Bool = false, errorMessage: String = "", success: Bool = false, usernameError: String = "", nameError: String = "", emailError: String = "", passwordError: String = "") {
         self.loading = loading
         self.networkError = networkError
@@ -27,5 +28,7 @@ struct RegistrationViewState: Equatable {
         self.nameError = nameError
         self.emailError = emailError
         self.passwordError = passwordError
+        
+        
     }
 }

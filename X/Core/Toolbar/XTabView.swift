@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Observation
+
 struct XTabView: View {
 
     @State private var selectedTab = 0
@@ -25,21 +25,26 @@ struct XTabView: View {
                         .environment(\.symbolVariants, selectedTab == 0 ? .fill : .none)
                 }
                 
-                .onAppear {
+                .onTapGesture {
+                    print("feed view appearing")
+                    
                     selectedTab = 0
+                    print("selected tab: \(selectedTab)")
                 }
                 .tag(0)
                 ExploreView().tabItem {
                     Image(systemName: "magnifyingglass")
                 }
-                .onAppear {
+                .onTapGesture {
+                    print("explore view appearing")
                     selectedTab = 1
+                    print("selected tab: \(selectedTab)")
                 }
                 .tag(1)
                 Text("").tabItem {
                     Image(systemName: "plus")
                 }
-                .onAppear {
+                .onTapGesture {
                     selectedTab = 2
                 }
                 .tag(2)
@@ -47,15 +52,15 @@ struct XTabView: View {
                     Image(systemName: selectedTab == 3 ? "heart.fill" : "heart")
                         .environment(\.symbolVariants, selectedTab == 3 ? .fill : .none)
                 }
-                .onAppear {
+                .onTapGesture {
                     selectedTab = 3
                 }
                 .tag(3)
                 ProfileView().tabItem {
-                    Image(systemName: selectedTab == 4 ? "person.fill" : "person")
+                    Image(systemName: selectedTab == 4 ? "message.fill" : "message")
                         .environment(\.symbolVariants, selectedTab == 4 ? .fill : .none)
                 }
-                .onAppear {
+                .onTapGesture {
                     selectedTab = 4
                 }
                 .tag(4)
@@ -77,7 +82,7 @@ struct XTabView: View {
             .sheet(isPresented: $isCreateXPresented, onDismiss: {selectedTab = 0}, content: {
                 CreateXView()
             })
-        .tint(.black)
+            .tint(.base)
         }
         
         .environment(viewModel)

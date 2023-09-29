@@ -32,11 +32,11 @@ struct NavDrawerHeader: View {
                 }
             }
             .padding(.bottom, 8)
-            Text("Donny")
+            Text("Manuel")
                 .font(.headline)
                 .fontWeight(.semibold)
                 
-            Text("@Krottlin")
+            Text("@manuel")
                 .font(.subheadline)
                 .fontWeight(.light)
                 .foregroundStyle(.gray)

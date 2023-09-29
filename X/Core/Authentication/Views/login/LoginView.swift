@@ -10,8 +10,9 @@ import Observation
 
 struct LoginView: View {
     
+    
+    
     @Bindable var viewModel = LoginViewModel()
-    @State var test = ""
     
     var body: some View {
         NavigationStack {
@@ -21,25 +22,31 @@ struct LoginView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 120, height: 120)
+                    .padding(.bottom, 32)
+                
                 
                 VStack {
-                    TextFieldWithError(hint: "Username", text: $viewModel.username, isError: viewModel.viewState.error, errorMessage: viewModel.viewState.userErrorDescription)
-                        .textInputAutocapitalization(.none)
+                    TextFieldWithError(hint: "Username", text: $viewModel.username, isError: viewModel.viewState.error, errorMessage: viewModel.viewState.userErrorDescription, icon: "person")
+                        .textInputAutocapitalization(.never)
+                        .keyboardType(.emailAddress)
                         .autocorrectionDisabled()
+                       
                    
-                    SecureField("Password", text: $viewModel.password)
+                    SecureFieldToggeable(hint: "Password", text: $viewModel.password, icon: "lock")
                         .modifier(XTextFieldsModifiers())
                 }
                 
                 NavigationLink {
-                    Text("Forgot password")
+                    ForgotPassword()
+                        .navigationBarBackButtonHidden()
+                        
                 } label: {
                     Text("Forgot password?")
                         .font(.footnote)
                         .fontWeight(.semibold)
                         .padding(.vertical)
                         .padding(.trailing, 28)
-                        .foregroundStyle(.black)
+                        .foregroundStyle(.base)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                 }
                 
@@ -61,7 +68,7 @@ struct LoginView: View {
                             .fontWeight(.semibold)
                     }
                     .font(.footnote)
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.base)
                 }
                 .padding(.vertical, 16)
             }

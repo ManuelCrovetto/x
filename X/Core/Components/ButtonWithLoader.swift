@@ -30,7 +30,7 @@ struct ButtonWithLoader: View {
                     
             }
             .frame(maxWidth: .infinity)
-            .background(isLoading ? .gray : .black)
+            .background(isLoading ? .gray : .surface)
             .cornerRadius(8)
             .disabled(isLoading)
             .padding(.horizontal, 24)

@@ -11,6 +11,7 @@ struct ExploreView: View {
     
     @State private var searchText = ""
     
+    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -26,10 +27,31 @@ struct ExploreView: View {
             }
             .searchable(text: $searchText, prompt: "Search")
             .navigationTitle("Search")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Image(.xLogo)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 40, height: 40)
+                }
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        withAnimation(.spring) {
+                            
+                        }
+                    } label: {
+                        Image(systemName: "person")
+                            .foregroundStyle(.black)
+                    }
+                }
+                
+            }
         }
     }
 }
 
 #Preview {
     ExploreView()
+        .environment(XTabViewModel())
 }

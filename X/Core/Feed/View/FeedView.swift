@@ -10,7 +10,7 @@ import Observation
 
 struct FeedView: View {
     
-    @Environment(XTabViewModel.self) var viewModel
+    @Environment(XTabViewModel.self) private var viewModel
     
     var body: some View {
         NavigationStack {
@@ -44,7 +44,7 @@ struct FeedView: View {
                                 viewModel.isDrawerOpen.toggle()
                             }
                         } label: {
-                            Image(systemName: "list.bullet")
+                            Image(systemName: "person")
                                 .foregroundStyle(.black)
                         }
                     }
@@ -57,5 +57,9 @@ struct FeedView: View {
 }
 
 #Preview {
+    
     FeedView()
+        .environment(XTabViewModel())
+        
+        
 }

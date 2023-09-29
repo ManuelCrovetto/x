@@ -22,19 +22,30 @@ struct RegistrationView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 120, height: 120)
+                .padding(.bottom, 32)
             
             VStack {
-                TextFieldWithError(hint: "Enter your username", text: $viewModel.userName, isError: viewModel.viewState.fieldsError, errorMessage: viewModel.viewState.usernameError)
+                UsernameAvilabilityTextField(hint: "Username", text: $viewModel.userName, userAvailability: viewModel.usernameAvailability, icon: "at")
+                    .padding(.bottom, 24)
                     
-                TextFieldWithError(hint: "Enter your name", text: $viewModel.fullName, isError: viewModel.viewState.fieldsError, errorMessage: viewModel.viewState.nameError)
+                TextFieldWithError(hint: "Enter your name", text: $viewModel.fullName, isError: viewModel.viewState.fieldsError, errorMessage: viewModel.viewState.nameError, icon: "person.text.rectangle")
+                    .keyboardType(.alphabet)
+                    .autocorrectionDisabled()
+                TextFieldWithError(hint: "Enter your email", text: $viewModel.email, isError: viewModel.viewState.fieldsError, errorMessage: viewModel.viewState.emailError, icon: "envelope")
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+                    .keyboardType(.emailAddress)
+                SecureFieldToggeable(hint: "Password", text: $viewModel.password, icon: "lock")
+                    .modifier(XTextFieldsModifiers())
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+                    .keyboardType(.asciiCapable)
                     
-                TextFieldWithError(hint: "Enter your email", text: $viewModel.email, isError: viewModel.viewState.fieldsError, errorMessage: viewModel.viewState.emailError)
-                    
-                    .textInputAutocapitalization(.none)
-                    
-                SecureFieldWithError(hint: "Password", text: $viewModel.password, isError: viewModel.viewState.fieldsError, errorMessage: viewModel.viewState.passwordError)
-                SecureFieldWithError(hint: "Repeat password", text: $viewModel.repeatedPassword, isError: viewModel.viewState.fieldsError, errorMessage: viewModel.viewState.passwordError)
-                    
+                SecureFieldToggeable(hint: "Repeat password", text: $viewModel.repeatedPassword, icon: "lock")
+                    .modifier(XTextFieldsModifiers())
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+                    .keyboardType(.asciiCapable)
                 
                 ButtonWithLoader(text: "Sign up", isLoading: viewModel.viewState.loading, action: {
                     Task {
@@ -56,9 +67,12 @@ struct RegistrationView: View {
                         .fontWeight(.semibold)
                 }
                 .font(.footnote)
-                .foregroundStyle(.black)
+                .foregroundStyle(.base)
             }
             .padding(.vertical)
+        }
+        .onChange(of: viewModel.userName) {
+            viewModel.checkIfUserAlreadyExists()
         }
         .onChange(of: viewModel.viewState) {
             presentSuccessDialog = viewModel.viewState.success
@@ -68,6 +82,8 @@ struct RegistrationView: View {
             Button("Ok") {
                 dismiss()
             }
+        } message: {
+            Text("We've sent you a validation email. Please check your inbox or spam.")
         }
         .alert("Oops...", isPresented: $presentErrorDialog) {
             Button("Ok") {

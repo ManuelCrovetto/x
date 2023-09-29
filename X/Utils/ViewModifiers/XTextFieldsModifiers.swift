@@ -10,6 +10,7 @@ import SwiftUI
 struct XTextFieldsModifiers: ViewModifier {
     func body(content: Content) -> some View {
         content
+            .frame(height: 32)
             .font(.subheadline)
             .padding(12)
             .background(Color(.systemGray6))
