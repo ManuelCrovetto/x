@@ -11,28 +11,35 @@ import FirebaseFirestore
 class UserServices {
     
     private let db = Firestore.firestore()
-    private var doesUserIdExists = false
     
     static let shared = UserServices()
     
     func checkUsernameAvailability(newUsername: String, doesExists: @escaping (Bool) -> ()) async throws {
-        db.collection("usernames").getDocuments { querySnapshot, error in
-           if let error {
-               doesExists(true)
-               print("Error getting users documents. Error: \(error)")
-           } else {
-               if let querySnapshot {
-                   var usernames: [String] = []
-                   for document in querySnapshot.documents {
-                       let id = document.documentID
-                       usernames.append(id)
-                   }
-                   doesExists(usernames.contains(newUsername))
-                
-               } else {
-                   doesExists(false)
-               }
-           }
-       }
+        do {
+            let usernameLowercased = newUsername.lowercased()
+            let querySnapshot = try await db.collection("usernames").getDocuments()
+            if querySnapshot.documents.isEmpty {
+                doesExists(false)
+                return
+            } else {
+                var usernamesList: [String] = []
+                querySnapshot.documents.forEach { data in
+                    usernamesList.append(data.documentID.lowercased())
+                }
+                doesExists(usernamesList.contains(usernameLowercased))
+            }
+        } catch {
+            doesExists(true)
+            print("ERROR in \(self): error attempting to get documents to check username availability.")
+        }
+    }
+    
+    
+    private func setDocumentsData(document: DocumentReference, dataDictionaryList: [String: String]) async {
+        do {
+            try await document.setData(dataDictionaryList)
+        } catch {
+            print("ERROR in \(self): Error during setting data in the document: \(document.path), the following data: \(dataDictionaryList).")
+        }
     }
 }

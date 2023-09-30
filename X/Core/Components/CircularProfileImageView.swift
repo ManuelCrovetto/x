@@ -9,14 +9,22 @@ import SwiftUI
 
 struct CircularProfileImageView: View {
     
-    
-    
+    var url: String? = nil
+
     var body: some View {
-        Image("der")
-            .resizable()
-            .scaledToFill()
-            .frame(width: 40, height: 40)
-            .clipShape(Circle())
+        AsyncImage(url: URL(string: url ?? "")) { image in
+            image.resizable()
+            
+        } placeholder: {
+            Image(systemName: "person")
+                .resizable()
+                .padding(8)
+                .scaledToFit()
+                .frame(width: 40, height: 40)
+                .clipShape(Circle())
+        }
+        .frame(width: 40, height: 40)
+        .clipShape(Circle())
     }
 }
 

@@ -33,7 +33,7 @@ struct FeedView: View {
                         Image(.xLogo)
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 40, height: 40)
+                            .frame(width: 32, height: 32)
                     }
                     ToolbarItem(placement: .topBarTrailing) {
                         Image(systemName: "arrow.counterclockwise")

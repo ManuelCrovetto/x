@@ -9,9 +9,9 @@ import SwiftUI
 
 struct CreateXView: View {
     
-    @State private var caption = ""
+    @Bindable private var vm = XCreationViewModel()
     @Environment(\.dismiss) var dismiss
-    
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -19,14 +19,19 @@ struct CreateXView: View {
                     CircularProfileImageView()
                     VStack(alignment: .leading, spacing: 4) {
                         Text("dersarco")
-                        TextField("Start X...", text: $caption, axis: .vertical)
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+                            
+                        TextFieldWithError(hint: "Start X", text: $vm.xBody, isError: vm.viewState.error, errorMessage: vm.viewState.errorMessage, isRegularTextField: false, leadingPadding: 8)
+                            .font(.subheadline)
+                            .fontWeight(.regular)
                     }
                     .font(.footnote)
                     Spacer()
                     
-                    if !caption.isEmpty {
+                    if !vm.xBody.isEmpty {
                         Button {
-                            caption = ""
+                            vm.xBody = ""
                         } label: {
                             Image(systemName: "xmark")
                                 .resizable()
@@ -42,6 +47,15 @@ struct CreateXView: View {
             .navigationTitle("New X")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .principal) {
+                    HStack {
+                        Text("New")
+                        Image(.xLogo)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 16, height: 16)
+                    }
+                }
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Cancel") {
                         dismiss()
@@ -51,10 +65,10 @@ struct CreateXView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Post") {
-                        
+                        vm.createX()
                     }
-                    .opacity(caption.isEmpty ? 0.5 : 1.0)
-                    .disabled(caption.isEmpty)
+                    .opacity(vm.xBody.isEmpty ? 0.5 : 1.0)
+                    .disabled(vm.xBody.isEmpty)
                     .font(.subheadline)
                     .foregroundStyle(.black)
                     .fontWeight(.semibold)
@@ -64,6 +78,7 @@ struct CreateXView: View {
         }
     }
 }
+
 
 #Preview {
     CreateXView()

@@ -17,6 +17,7 @@ import FirebaseFirestore
     
     static let shared = AuthServices()
     
+    
     init() {
         
         self.userSession = Auth.auth().currentUser
@@ -33,7 +34,6 @@ import FirebaseFirestore
             }
             self.userSession = loginResult.user
             return Response.success(loginResult.user)
-            
         } catch {
             return Response.error("")
         }
@@ -55,17 +55,13 @@ import FirebaseFirestore
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             print("\(self): User with email created.")
             let document = db.collection("users").document(result.user.uid)
-            document.setData([
+            let dataDictionaryList = [
                 "email": email,
                 "fullname": fullname,
                 "username": username
-            ]) { error in
-                if let error = error {
-                    print("\(self): Error setting user's data. \(error)")
-                } else {
-                    print("User data added.")
-                }
-            }
+            ]
+            await setDocumentsData(document: document, dataDictionaryList: dataDictionaryList)
+            
             try await db.collection("usernames").document(username).setData([:])
             print("\(self): Username added...")
             try await sendVerificationEmail(user: result.user)
@@ -81,7 +77,7 @@ import FirebaseFirestore
     func resetPassword(email: String, onCompletion: @escaping (Bool) -> ()) {
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if let error = error {
-                print("\(self): Error resetting password: Stacktrace: \(error)")
+                print("ERROR in \(self): Error resetting password: Stacktrace: \(error)")
                 onCompletion(false)
             } else {
                 onCompletion(true)
@@ -90,14 +86,20 @@ import FirebaseFirestore
         }
     }
     
+    private func setDocumentsData(document: DocumentReference, dataDictionaryList: [String: String]) async {
+        do {
+            try await document.setData(dataDictionaryList)
+        } catch {
+            print("ERROR in \(self): Error during setting data in the document: \(document.path), the following data: \(dataDictionaryList).")
+        }
+    }
+    
     private func sendVerificationEmail(user: User) async throws {
         do {
             try await user.sendEmailVerification()
         } catch {
-            print("\(self): Sending email verification failed.")
+            print("ERROR in \(self): Sending email verification failed.")
         }
         
     }
-    
-
 }

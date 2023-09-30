@@ -14,6 +14,8 @@ struct TextFieldWithError: View {
     var isError: Bool
     var errorMessage: String
     var icon: String? = nil
+    var isRegularTextField: Bool = true
+    var leadingPadding: CGFloat? = nil
     
     @ViewBuilder private var textField: some View {
         if icon != nil {
@@ -32,14 +34,18 @@ struct TextFieldWithError: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            textField.modifier(XTextFieldsModifiers())
+            if isRegularTextField {
+                textField.modifier(XTextFieldsModifiers())
+            } else {
+                textField
+            }
             
             if isError {
                 Text(errorMessage)
                     .font(.caption)
                     .fontWeight(.semibold)
                     .foregroundStyle(.red)
-                    .padding(.horizontal, 32)
+                    .padding(.leading, leadingPadding ?? 32)
             }
         }
         .animation(.easeIn, value: errorMessage)

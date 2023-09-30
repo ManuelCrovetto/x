@@ -284,8 +284,8 @@
             filePath = "X/Core/Components/TextFieldWithError.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -316,8 +316,8 @@
             filePath = "X/Services/AuthServices.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "35"
-            endingLineNumber = "35"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "login(withEmail:password:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -348,8 +348,8 @@
             filePath = "X/Services/AuthServices.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "login(withEmail:password:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -432,6 +432,70 @@
             endingLineNumber = "1461"
             landmarkName = "-sendPasswordResetWithNullableActionCodeSettings:email:completion:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "745313A8-D057-4448-9D39-E214DF23C55F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "X/Services/UserServices.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "checkUsernameAvailability(newUsername:doesExists:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "745313A8-D057-4448-9D39-E214DF23C55F - ad123ba9e94aa172"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for X.UserServices.checkUsernameAvailability(newUsername: Swift.String, doesExists: (Swift.Bool) -&gt; ()) async throws -&gt; ()"
+                  moduleName = "X"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Services/UserServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "668">
+               </Location>
+               <Location
+                  uuid = "745313A8-D057-4448-9D39-E214DF23C55F - ad123ba9e94aa172"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for X.UserServices.checkUsernameAvailability(newUsername: Swift.String, doesExists: (Swift.Bool) -&gt; ()) async throws -&gt; ()"
+                  moduleName = "X"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Services/UserServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "660">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5C3E1382-FE71-4943-86C7-6AE1073275FD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "X/Core/Authentication/Views/singup/RegistrationView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
