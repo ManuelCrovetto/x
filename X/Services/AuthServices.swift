@@ -57,7 +57,7 @@ import FirebaseFirestore
             let document = db.collection("users").document(result.user.uid)
             let dataDictionaryList = [
                 "email": email,
-                "fullname": fullname,
+                "nickname": fullname,
                 "username": username
             ]
             await setDocumentsData(document: document, dataDictionaryList: dataDictionaryList)

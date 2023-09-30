@@ -82,6 +82,7 @@
 		74E1581D2AC87DDE001B8117 /* XData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E1581C2AC87DDE001B8117 /* XData.swift */; };
 		74E1581F2AC89EB4001B8117 /* XCreationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E1581E2AC89EB4001B8117 /* XCreationViewModel.swift */; };
 		74E158222AC89F59001B8117 /* XCreationViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E158212AC89F59001B8117 /* XCreationViewState.swift */; };
+		74E158252AC8C093001B8117 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E158242AC8C093001B8117 /* UserData.swift */; };
 		74E840482AC34942009D8D22 /* NavDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E840472AC34942009D8D22 /* NavDrawer.swift */; };
 		74E8404B2AC349D6009D8D22 /* NavDrawerContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8404A2AC349D6009D8D22 /* NavDrawerContent.swift */; };
 		74E8404D2AC351EB009D8D22 /* XTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8404C2AC351EB009D8D22 /* XTabViewModel.swift */; };
@@ -142,6 +143,7 @@
 		74E1581C2AC87DDE001B8117 /* XData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XData.swift; sourceTree = "<group>"; };
 		74E1581E2AC89EB4001B8117 /* XCreationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCreationViewModel.swift; sourceTree = "<group>"; };
 		74E158212AC89F59001B8117 /* XCreationViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCreationViewState.swift; sourceTree = "<group>"; };
+		74E158242AC8C093001B8117 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		74E840472AC34942009D8D22 /* NavDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavDrawer.swift; sourceTree = "<group>"; };
 		74E8404A2AC349D6009D8D22 /* NavDrawerContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavDrawerContent.swift; sourceTree = "<group>"; };
 		74E8404C2AC351EB009D8D22 /* XTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XTabViewModel.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				74E1581C2AC87DDE001B8117 /* XData.swift */,
+				74E158242AC8C093001B8117 /* UserData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -342,8 +345,8 @@
 		7470D6482AB63BD200C490DE /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				74E158232AC8B8C7001B8117 /* ViewModel */,
 				7470D6492AB63BDA00C490DE /* View */,
-				74E158182AC87AB8001B8117 /* FeedViewModel.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -562,6 +565,14 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		74E158232AC8B8C7001B8117 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				74E158182AC87AB8001B8117 /* FeedViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		74E840492AC349BF009D8D22 /* NavDrawer */ = {
 			isa = PBXGroup;
 			children = (
@@ -724,6 +735,7 @@
 				74E1581F2AC89EB4001B8117 /* XCreationViewModel.swift in Sources */,
 				74E840532AC370D4009D8D22 /* DrawerActionInitiator.swift in Sources */,
 				74E8404F2AC359FC009D8D22 /* NavDrawerHeader.swift in Sources */,
+				74E158252AC8C093001B8117 /* UserData.swift in Sources */,
 				748061E32AC21C9200AFD38B /* ButtonWithLoader.swift in Sources */,
 				74AD89362AC77B2800E90F01 /* ForgotPasswordViewModel.swift in Sources */,
 				7470D65B2AB63F1900C490DE /* ProfileView.swift in Sources */,

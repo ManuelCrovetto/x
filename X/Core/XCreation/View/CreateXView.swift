@@ -18,7 +18,7 @@ struct CreateXView: View {
                 HStack {
                     CircularProfileImageView()
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("dersarco")
+                        Text(vm.userData?.nickname ?? "")
                             .font(.subheadline)
                             .fontWeight(.medium)
                             
@@ -43,6 +43,9 @@ struct CreateXView: View {
                 }
                 Spacer()
             }
+            .onChange(of: vm.viewState.success, {
+                dismiss()
+            })
             .padding()
             .navigationTitle("New X")
             .navigationBarTitleDisplayMode(.inline)
@@ -64,15 +67,19 @@ struct CreateXView: View {
                     .foregroundStyle(.black)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Post") {
-                        vm.createX()
+                    if vm.viewState.loading {
+                        ProgressView()
+                            .frame(width: 16, height: 16)
+                    } else {
+                        Button("Post") {
+                            vm.createX()
+                        }
+                        .opacity(vm.xBody.isEmpty ? 0.5 : 1.0)
+                        .disabled(vm.xBody.isEmpty)
+                        .font(.subheadline)
+                        .foregroundStyle(.black)
+                        .fontWeight(.semibold)
                     }
-                    .opacity(vm.xBody.isEmpty ? 0.5 : 1.0)
-                    .disabled(vm.xBody.isEmpty)
-                    .font(.subheadline)
-                    .foregroundStyle(.black)
-                    .fontWeight(.semibold)
-                    
                 }
             }
         }

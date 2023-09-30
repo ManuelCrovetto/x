@@ -12,14 +12,17 @@ import FirebaseAuth
 @Observable class XCreationViewModel {
     
     var viewState = XCreationViewState()
-    var user: User? = nil
+    var userData: UserData? = nil
     var xBody: String = ""
     
     private var createXJob: Task<Void, Never>? = nil
     private var getUserDataJob: Task<Void, Never>? = nil
     
     init() {
-        getUserData()
+        Task {
+            await getUserData()
+        }
+        
     }
     
     func createX() {
@@ -29,7 +32,12 @@ import FirebaseAuth
         }
         createXJob?.cancel()
         createXJob = Task {
-            let xData = XData(userId: user?.uid ?? "", date: Date.now.description, body: xBody)
+            viewState = XCreationViewState(loading: true)
+            guard let userData = await provideUserData() else {
+                return
+            }
+            self.userData = userData
+            let xData = XData(userId: AuthServices.shared.userSession?.uid ?? "", date: Date.now.description, body: xBody, nickName: userData.nickname, imageUrl: "", username: userData.username, reposts: [], comments: [], likes: [])
             let response = await XServices.shared.createX(xData: xData)
             switch response {
             case .error(_):
@@ -40,11 +48,29 @@ import FirebaseAuth
         }
     }
     
-    func getUserData() {
-        if let user = AuthServices.shared.userSession {
-            self.user = user
-        } else {
-            viewState = XCreationViewState(error: true, errorMessage: "We got an error. Please try again.")
+    func getUserData() async {
+        guard let userData = await provideUserData() else {
+            viewState = XCreationViewState(error: true, errorMessage: "Seems we have an error, please re-open this dialog.")
+            return
+        }
+        self.userData = userData
+    }
+    
+    private func provideUserData() async -> UserData? {
+        do {
+            let response = try await UserServices.shared.getUserData()
+            switch response {
+                
+            case .error(_):
+                viewState = XCreationViewState(error: true, errorMessage: "We got an error, please try again.")
+                print("\(self): error during fetching user's data.")
+                return nil
+            case let .success(userData):
+                return userData
+            }
+        } catch {
+            print("\(self): error during fetching user's data.")
+            return nil
         }
     }
 }

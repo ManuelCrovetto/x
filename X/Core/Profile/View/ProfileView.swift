@@ -95,7 +95,7 @@ struct ProfileView: View {
                     }
                     LazyVStack {
                         ForEach(0...5, id: \.self) { x in
-                            XView()
+                            
                         }
                     }
                 }

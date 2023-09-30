@@ -8,16 +8,41 @@
 import SwiftUI
 
 struct XView: View {
+    
+    let url: String?
+    let nickName: String
+    let username: String
+    let xBody: String
+    let comments: [XData]
+    let reposts: [String]
+    let likes: [String]
+    let userId: String
+    
+    private let iconSize: CGFloat = 16
+    
+    @ViewBuilder private var heartIcon: some View {
+        if likes.contains(userId) {
+            Image(systemName: "heart.fill")
+                .resizable()
+        } else {
+            Image(systemName: "heart")
+                .resizable()
+        }
+    }
+    
     var body: some View {
         VStack {
             HStack(alignment: .top, spacing: 12) {
-                CircularProfileImageView()
+                CircularProfileImageView(url: url)
                 
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
-                        Text("dersarco (primo luca)")
+                        Text(nickName)
                             .font(.footnote)
                             .fontWeight(.semibold)
+                        Text(username)
+                            .font(.footnote)
+                            .fontWeight(.light)
                         Text("· 10m")
                             .font(.caption)
                             .foregroundStyle(Color(.systemGray3))
@@ -30,7 +55,7 @@ struct XView: View {
                                 .foregroundStyle(Color(.darkGray))
                         }
                     }
-                    Text("Happy birthday to my cat! 🐈🎉")
+                    Text(xBody)
                         .font(.footnote)
                         .multilineTextAlignment(.leading)
                     
@@ -42,8 +67,8 @@ struct XView: View {
                                 Image("comment-icon")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 24, height: 24)
-                                Text("567")
+                                    .frame(width: iconSize, height: iconSize)
+                                Text(comments.count.description)
                                     .font(.footnote)
                                     .fontWeight(.light)
                                     .foregroundStyle(.black)
@@ -57,11 +82,11 @@ struct XView: View {
                                 Image("retweet-icon")
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 24, height: 24)
+                                    .frame(width: iconSize, height: iconSize)
                                     .tint(.black)
                                     
                             }
-                            Text("1.1k")
+                            Text(reposts.count.description)
                                 .font(.footnote)
                                 .fontWeight(.light)
                                 .foregroundStyle(.black)
@@ -71,12 +96,11 @@ struct XView: View {
                             Button {
                                 
                             } label: {
-                                Image("liked-icon")
-                                    .resizable()
+                                heartIcon
                                     .scaledToFit()
-                                    .frame(width: 24, height: 24)
+                                    .frame(width: iconSize, height: iconSize)
                             }
-                            Text("3.2k")
+                            Text(likes.count.description)
                                 .font(.footnote)
                                 .fontWeight(.light)
                                 .foregroundStyle(.black)
@@ -90,7 +114,7 @@ struct XView: View {
                             Image("analytics")
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 24, height: 24)
+                                .frame(width: iconSize, height: iconSize)
                                 .colorMultiply(.black)
                         }
                     }
@@ -104,5 +128,6 @@ struct XView: View {
 }
 
 #Preview {
-    XView()
+    XView(url: "", nickName: "Kirstini", username: "@kirstin", xBody: "I'm so annoying hahaha", comments: [], reposts: [], likes: [], userId: "")
 }
+

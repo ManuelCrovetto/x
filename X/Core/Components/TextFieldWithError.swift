@@ -45,10 +45,14 @@ struct TextFieldWithError: View {
                     .font(.caption)
                     .fontWeight(.semibold)
                     .foregroundStyle(.red)
-                    .padding(.leading, leadingPadding ?? 32)
+                    .padding(.horizontal, leadingPadding ?? 32)
             }
         }
         .animation(.easeIn, value: errorMessage)
     }
+}
+
+#Preview {
+    TextFieldWithError(hint: "Password", text: .constant(""), isError: true, errorMessage: "Error messageweoiedoiwejidjwedjwidjoijdowjdowjeojowejdowjedojdoijwe", icon: "lock", isRegularTextField: true, leadingPadding: nil)
 }
 

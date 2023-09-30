@@ -13,6 +13,11 @@ struct XData: Identifiable ,Codable {
     let userId: String
     let date: String
     let body: String
-    
+    let nickName: String
+    let imageUrl: String
+    let username: String
+    let reposts: [String]
+    let comments: [XData]
+    let likes: [String]
     
 }

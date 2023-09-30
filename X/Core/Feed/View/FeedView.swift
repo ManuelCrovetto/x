@@ -5,27 +5,25 @@
 //  Created by Manuel Crovetto on 16/09/2023.
 //
 
-import SwiftUI
 import Observation
+import SwiftUI
 
 struct FeedView: View {
-    
+    private var vm = FeedViewModel()
     @Environment(XTabViewModel.self) private var viewModel
-    
+
     var body: some View {
         NavigationStack {
             ZStack {
-                
                 ScrollView {
                     LazyVStack {
-                        ForEach(0 ... 0, id: \.self) { x in
-                            XView()
+                        ForEach(vm.xDataList, id: \.id) { x in
+                            XView(url: nil, nickName: x.nickName, username: "@\(x.username)", xBody: x.body, comments: x.comments, reposts: x.reposts, likes: x.reposts, userId: x.userId)
                         }
                     }
                 }
-
                 .refreshable {
-                    
+                    vm.fetchXs()
                 }
                 .scrollIndicators(.hidden)
                 .toolbar {
@@ -48,18 +46,14 @@ struct FeedView: View {
                                 .foregroundStyle(.black)
                         }
                     }
-                    
                 }
-            .navigationBarTitleDisplayMode(.inline)
+                .navigationBarTitleDisplayMode(.inline)
             }
         }
     }
 }
 
 #Preview {
-    
     FeedView()
         .environment(XTabViewModel())
-        
-        
 }
