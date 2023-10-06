@@ -19,6 +19,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct XApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    var xTabViewViewModel = XTabViewModel()
     var body: some Scene {
         WindowGroup {
            ContentView()

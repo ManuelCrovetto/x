@@ -34,11 +34,10 @@ class UserServices {
         }
     }
     
-    func getUserData() async throws -> Response<UserData> {
+    func getUserData() async throws -> Response<UserData, ()> {
         let userId = AuthServices.shared.userSession?.uid
         if let userId = userId {
             let userQuerySnapshot = try await db.collection("users").document(userId).getDocument()
-            print("PRINTNG DATA: \(String(describing: userQuerySnapshot.data()?.debugDescription))")
             return .success(try userQuerySnapshot.data(as: UserData.self))
         } else {
             return .error("\(self): UserId is nil.")

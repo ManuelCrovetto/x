@@ -24,7 +24,7 @@ import FirebaseFirestore
     }
     
     
-    func login(withEmail email: String, password: String) async throws -> Response<User> {
+    func login(withEmail email: String, password: String) async throws -> Response<User, ()> {
         do {
             let loginResult = try await Auth.auth().signIn(withEmail: email, password: password)
             if !loginResult.user.isEmailVerified {
@@ -50,7 +50,7 @@ import FirebaseFirestore
     }
     
     
-    func createUser(withEmail email: String, password: String, fullname: String, username: String) async throws -> Response<Bool> {
+    func createUser(withEmail email: String, password: String, fullname: String, username: String) async throws -> Response<Bool, ()> {
         do {
             let result = try await Auth.auth().createUser(withEmail: email, password: password)
             print("\(self): User with email created.")

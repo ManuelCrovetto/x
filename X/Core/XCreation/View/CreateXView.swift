@@ -44,7 +44,9 @@ struct CreateXView: View {
                 Spacer()
             }
             .onChange(of: vm.viewState.success, {
-                dismiss()
+                if vm.viewState.success {
+                    dismiss()
+                }
             })
             .padding()
             .navigationTitle("New X")
@@ -64,7 +66,7 @@ struct CreateXView: View {
                         dismiss()
                     }
                     .font(.subheadline)
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.base)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     if vm.viewState.loading {
@@ -77,7 +79,7 @@ struct CreateXView: View {
                         .opacity(vm.xBody.isEmpty ? 0.5 : 1.0)
                         .disabled(vm.xBody.isEmpty)
                         .font(.subheadline)
-                        .foregroundStyle(.black)
+                        .foregroundStyle(.base)
                         .fontWeight(.semibold)
                     }
                 }

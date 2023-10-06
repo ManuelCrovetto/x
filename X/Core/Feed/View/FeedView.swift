@@ -9,21 +9,43 @@ import Observation
 import SwiftUI
 
 struct FeedView: View {
-    private var vm = FeedViewModel()
+    @State private var vm = FeedViewModel()
     @Environment(XTabViewModel.self) private var viewModel
+    
+    @ViewBuilder private var feedBody: some View {
+        if vm.viewState.loading && vm.showsProgressViewInCenter {
+            
+            ProgressView()
+        } else {
+            ScrollView {
+                LazyVStack {
+                    ForEach(vm.xDataList, id: \.id) { x in
+                        XView(xId:x.id.orEmpty() ,url: nil, nickName: x.nickName, username: "@\(x.username)", xBody: x.body, comments: x.comments, reposts: x.reposts, likes: x.reposts, userId: x.userId) { action in
+                            vm.handleXAction(actions: action)
+                        }.onAppear {
+                            withAnimation(.easeIn) {
+                                vm.shouldLoadMoreTweets(xId: x.id ?? "")
+                            }
+                            
+                        }
+                    }
+                }
+                if vm.viewState.loading {
+                    ProgressView()
+                }
+            }
+        }
+    }
 
     var body: some View {
         NavigationStack {
             ZStack {
-                ScrollView {
-                    LazyVStack {
-                        ForEach(vm.xDataList, id: \.id) { x in
-                            XView(url: nil, nickName: x.nickName, username: "@\(x.username)", xBody: x.body, comments: x.comments, reposts: x.reposts, likes: x.reposts, userId: x.userId)
-                        }
-                    }
-                }
+                feedBody
                 .refreshable {
-                    vm.fetchXs()
+                    withAnimation(.easeIn) {
+                        vm.showsProgressViewInCenter = false
+                        vm.fetchXs()
+                    }
                 }
                 .scrollIndicators(.hidden)
                 .toolbar {
@@ -34,7 +56,15 @@ struct FeedView: View {
                             .frame(width: 32, height: 32)
                     }
                     ToolbarItem(placement: .topBarTrailing) {
-                        Image(systemName: "arrow.counterclockwise")
+                        Button {
+                            withAnimation(.easeIn) {
+                                vm.showsProgressViewInCenter = true
+                                vm.fetchXs()
+                            }
+                        } label: {
+                            Image(systemName: "arrow.counterclockwise")
+                                .foregroundStyle(.base)
+                        }
                     }
                     ToolbarItem(placement: .topBarLeading) {
                         Button {
@@ -43,13 +73,16 @@ struct FeedView: View {
                             }
                         } label: {
                             Image(systemName: "person")
-                                .foregroundStyle(.black)
+                                .foregroundStyle(.base)
                         }
                     }
                 }
                 .navigationBarTitleDisplayMode(.inline)
             }
+            
         }
+        .environment(vm)
+        .ignoresSafeArea()
     }
 }
 

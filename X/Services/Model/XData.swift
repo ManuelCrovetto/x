@@ -7,11 +7,12 @@
 
 import Foundation
 import FirebaseFirestoreSwift
+import FirebaseFirestore
 
-struct XData: Identifiable ,Codable {
+struct XData: Identifiable, Codable {
     @DocumentID var id: String?
     let userId: String
-    let date: String
+    let date: Timestamp
     let body: String
     let nickName: String
     let imageUrl: String
@@ -19,5 +20,5 @@ struct XData: Identifiable ,Codable {
     let reposts: [String]
     let comments: [XData]
     let likes: [String]
-    
+
 }

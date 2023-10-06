@@ -8,6 +8,8 @@
 import Foundation
 import Observation
 import FirebaseAuth
+import FirebaseDatabase
+import FirebaseFirestore
 
 @Observable class XCreationViewModel {
     
@@ -37,12 +39,12 @@ import FirebaseAuth
                 return
             }
             self.userData = userData
-            let xData = XData(userId: AuthServices.shared.userSession?.uid ?? "", date: Date.now.description, body: xBody, nickName: userData.nickname, imageUrl: "", username: userData.username, reposts: [], comments: [], likes: [])
+            let xData = XData(userId: AuthServices.shared.userSession?.uid ?? "", date: Timestamp(date: Date.now), body: xBody, nickName: userData.nickname, imageUrl: "", username: userData.username, reposts: [], comments: [], likes: [])
             let response = await XServices.shared.createX(xData: xData)
             switch response {
             case .error(_):
                 viewState = XCreationViewState(error: true, errorMessage: "Oops, seems like we got an error. Please try again.")
-            case .success():
+            case .success(_, _):
                 viewState = XCreationViewState(success: true)
             }
         }
@@ -65,7 +67,7 @@ import FirebaseAuth
                 viewState = XCreationViewState(error: true, errorMessage: "We got an error, please try again.")
                 print("\(self): error during fetching user's data.")
                 return nil
-            case let .success(userData):
+            case let .success(userData, _):
                 return userData
             }
         } catch {

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-enum Response<T> {
+enum Response<T, R> {
     case error(String)
-    case success(T)
+    case success(T, aditional: R? = nil)
 }

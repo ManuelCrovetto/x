@@ -26,19 +26,14 @@ struct XTabView: View {
                 }
                 
                 .onTapGesture {
-                    print("feed view appearing")
-                    
                     selectedTab = 0
-                    print("selected tab: \(selectedTab)")
                 }
                 .tag(0)
                 ExploreView().tabItem {
                     Image(systemName: "magnifyingglass")
                 }
                 .onTapGesture {
-                    print("explore view appearing")
-                    selectedTab = 1
-                    print("selected tab: \(selectedTab)")
+                    selectedTab = 2
                 }
                 .tag(1)
                 Text("").tabItem {
@@ -73,7 +68,8 @@ struct XTabView: View {
                     
                 }
             }
-            .cornerRadius(viewModel.isDrawerOpen ? 20 : 10)
+            
+            .cornerRadius(viewModel.isDrawerOpen ? 20 : 0)
             .offset(x: viewModel.isDrawerOpen ? 300 : 0, y: viewModel.isDrawerOpen ? 44 : 0)
             .scaleEffect(viewModel.isDrawerOpen ? 0.8 : 1)
             .onChange(of: selectedTab) {
@@ -83,9 +79,11 @@ struct XTabView: View {
                 CreateXView()
             })
             .tint(.base)
+            .ignoresSafeArea()
         }
         
         .environment(viewModel)
+        
         
         
     }

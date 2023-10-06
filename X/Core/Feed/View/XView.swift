@@ -9,6 +9,7 @@ import SwiftUI
 
 struct XView: View {
     
+    let xId: String
     let url: String?
     let nickName: String
     let username: String
@@ -18,15 +19,62 @@ struct XView: View {
     let likes: [String]
     let userId: String
     
+    var xAction: (XActions) -> ()
+    
+    @State private var isGenericXOptionsPresented = false
+    @State private var isOwnXOptionsPresented = false
     private let iconSize: CGFloat = 16
+    
+    @Environment(FeedViewModel.self) private var viewModel
     
     @ViewBuilder private var heartIcon: some View {
         if likes.contains(userId) {
-            Image(systemName: "heart.fill")
-                .resizable()
+            CustomIcon(systemName: "heart.fill", height: iconSize, width: iconSize, foregroundStyle: .base)
         } else {
-            Image(systemName: "heart")
-                .resizable()
+            CustomIcon(systemName: "heart", height: iconSize, width: iconSize, foregroundStyle: .base)
+        }
+    }
+    
+    @ViewBuilder private var followButton: some View {
+        Button {
+            viewModel.handleXAction(actions: .follow(userId: userId))
+        } label: {
+            HStack {
+                CustomIcon(
+                    systemName: "person.crop.circle.badge.plus",
+                    foregroundStyle: .base
+                )
+                
+                Text("Follow")
+                    .foregroundStyle(.base)
+                    
+                Text("\(username)")
+                    .foregroundStyle(.base)
+                    .fontWeight(.semibold)
+                    .formStyle(.grouped)
+                    .presentationDetents([.fraction(0.1)])
+                    .presentationDragIndicator(.visible)
+            }
+        }
+    }
+    
+    @ViewBuilder private var unfollowButton: some View {
+        Button {
+            viewModel.handleXAction(actions: .unfollow(userId: userId))
+        } label: {
+            HStack {
+                CustomIcon(
+                    systemName: "person.crop.circle.badge.minus",
+                    foregroundStyle: .red
+                )
+                Text("Unfollow")
+                Text("\(username)")
+                    .fontWeight(.semibold)
+                    .formStyle(.grouped)
+                    .presentationDetents([.fraction(0.1)])
+                    .presentationDragIndicator(.visible)
+            }
+            .foregroundStyle(.red)
         }
     }
     
@@ -49,7 +97,11 @@ struct XView: View {
                         Spacer()
                     
                         Button {
-                            
+                            if viewModel.checkIfItsOwnX(userId: userId) {
+                                isOwnXOptionsPresented.toggle()
+                            } else {
+                                isGenericXOptionsPresented.toggle()
+                            }
                         } label: {
                             Image(systemName: "ellipsis")
                                 .foregroundStyle(Color(.darkGray))
@@ -64,10 +116,7 @@ struct XView: View {
                             Button {
                                 
                             } label: {
-                                Image("comment-icon")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: iconSize, height: iconSize)
+                                CustomIcon(systemName: "message", height: iconSize, width: iconSize, foregroundStyle: .base)
                                 Text(comments.count.description)
                                     .font(.footnote)
                                     .fontWeight(.light)
@@ -79,11 +128,7 @@ struct XView: View {
                             Button {
                                 
                             } label: {
-                                Image("retweet-icon")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: iconSize, height: iconSize)
-                                    .tint(.black)
+                                CustomIcon(systemName: "return.right", height: iconSize, width: iconSize, foregroundStyle: .base)
                                     
                             }
                             Text(reposts.count.description)
@@ -111,11 +156,7 @@ struct XView: View {
                         Button {
                             
                         } label: {
-                            Image("analytics")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: iconSize, height: iconSize)
-                                .colorMultiply(.black)
+                            CustomIcon(systemName: "chart.bar", height: iconSize, width: iconSize, foregroundStyle: .base)
                         }
                     }
                     .padding(.vertical, 8)
@@ -123,11 +164,45 @@ struct XView: View {
             }
             Divider()
         }
+        .sheet(isPresented: $isGenericXOptionsPresented) {
+            Form {
+                if viewModel.checkIfCurrentUserFollowsXOwner(userId: userId) {
+                    unfollowButton
+                } else {
+                    followButton
+                }
+            }
+        }
+        .sheet(isPresented: $isOwnXOptionsPresented, content: {
+            Form {
+                Button {
+                    xAction(.deleteX(userId: self.userId, xId: self.xId))
+                    isOwnXOptionsPresented.toggle()
+                } label: {
+                    HStack {
+                        CustomIcon(
+                            systemName: "trash",
+                            foregroundStyle: .base
+                        )
+                        Text("Delete this X")
+                            .foregroundStyle(.base)
+                            
+                    }
+                    
+                }
+            }
+            .formStyle(.grouped)
+            .presentationDetents([.fraction(0.1)])
+            .presentationDragIndicator(.visible)
+        })
         .padding()
     }
 }
 
 #Preview {
-    XView(url: "", nickName: "Kirstini", username: "@kirstin", xBody: "I'm so annoying hahaha", comments: [], reposts: [], likes: [], userId: "")
+    XView(xId: "", url: "", nickName: "Kirstini", username: "@kirstin", xBody: "I'm so annoying hahaha", comments: [], reposts: [], likes: [], userId: "") { action in
+        
+    }
+    .environment(FeedViewModel())
 }
 

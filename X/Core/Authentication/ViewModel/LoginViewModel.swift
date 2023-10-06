@@ -22,7 +22,7 @@ import Observation
             switch (result) {
             case let .error(errorMessage):
                 viewState = LoginViewState(error: true, userErrorDescription: errorMessage.isEmpty ? genericError : errorMessage)
-            case .success(_):
+            case .success(_, _):
                 viewState = LoginViewState(success: true)
             }
         }
