@@ -39,6 +39,7 @@ struct XView: View {
     @ViewBuilder private var followButton: some View {
         Button {
             viewModel.handleXAction(actions: .follow(userId: userId))
+            isGenericXOptionsPresented.toggle()
         } label: {
             HStack {
                 CustomIcon(
@@ -62,6 +63,8 @@ struct XView: View {
     @ViewBuilder private var unfollowButton: some View {
         Button {
             viewModel.handleXAction(actions: .unfollow(userId: userId))
+            isGenericXOptionsPresented.toggle()
+            
         } label: {
             HStack {
                 CustomIcon(

@@ -89,22 +89,30 @@ import Observation
             return
         }
         checkUsernameAvailabilityJob?.cancel()
-        checkUsernameAvailabilityJob = Task {
-            usernameAvailability = .loading
-            sleep(2)
-            if userName.isEmpty {
-                usernameAvailability = .notStarted
-                return
-            }
+        checkUsernameAvailabilityJob = Task { [weak self] in
             do {
-                try await UserServices.shared.checkUsernameAvailability(newUsername: userName) { [weak self] doesExists in
-                    self?.usernameAvailability = doesExists ? .unavailable : .available
+                await self?.updateUsernameAvailability(.loading)
+                try await Task.sleep(seconds: 2)
+                if self?.userName.isEmpty == true {
+                    await self?.updateUsernameAvailability(.notStarted)
+                    return
+                }
+                switch try await UserServices.shared.checkUsernameAvailability(newUsername: self?.userName ?? "") {
+                case .exists:
+                    await self?.updateUsernameAvailability(.unavailable)
+                case .noExists:
+                    await self?.updateUsernameAvailability(.unavailable)
                 }
             } catch {
-                self.usernameAvailability = .unavailable
-                print("\(self): error during check of username availability... stacktrace: \(error)")
+                self?.usernameAvailability = .unavailable
+                print("\(String(describing: self)): error during check of username availability... stacktrace: \(error)")
             }
         }
+    }
+    
+    @MainActor
+    private func updateUsernameAvailability(_ availabilityEvent: AvailabilityEvents) {
+        self.usernameAvailability = availabilityEvent
     }
     
 }

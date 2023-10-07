@@ -20,28 +20,24 @@ import FirebaseFirestore
     var xPayload = 10
     var lastDocument: QueryDocumentSnapshot? = nil
     
-    init() {
-        fetchXs()
-    }
-    
     func fetchXs(refetchXs: Bool = false) {
         fetchJob?.cancel()
-        fetchJob = Task {
-            viewState = XFeedViewState(loading: true)
+        fetchJob = Task { [weak self] in
+            await self?.updateViewState(XFeedViewState(loading: true))
             if refetchXs {
-                lastDocument = nil
-                xDataList.removeAll()
+                self?.lastDocument = nil
             }
-            let response = await XServices.shared.fetchXs(payload: xPayload, lastDocument: lastDocument)
+            let response = await XServices.shared.fetchXs(payload: self?.xPayload ?? 10, lastDocument: self?.lastDocument)
             switch response {
             case .error(_):
-                print("\(self): Error fetching Xs.")
-                viewState = XFeedViewState(error: true, errorMessage: "Oops, we got an error, please try again.")
+                print("\(String(describing: self)): Error fetching Xs.")
+                await self?.updateViewState(XFeedViewState(error: true, errorMessage: "Oops, we got an error, please try again."))
             case let .success(xDataAndLastDocument, followsList):
-                self.xDataList.append(contentsOf: xDataAndLastDocument.xData)
-                self.lastDocument = xDataAndLastDocument.lastDocument
-                self.followsList = followsList ?? []
-                viewState = XFeedViewState(success: true)
+                await self?.updateFeedData(refetched: refetchXs, xList: xDataAndLastDocument.xData)
+                
+                self?.lastDocument = xDataAndLastDocument.lastDocument
+                await self?.updateFollowsList(followsList: followsList)
+                await self?.updateViewState(XFeedViewState(success: true))
             }
         }
     }
@@ -61,21 +57,22 @@ import FirebaseFirestore
     
     func handleXAction(actions: XActions) {
         handleXActionJob?.cancel()
-        handleXActionJob = Task {
+        handleXActionJob = Task { [weak self] in
             switch actions {
             case .deleteX(userId: let userId, xId: let xId):
                 switch await XServices.shared.deleteX(userId: userId, xId: xId) {
                 case .error(_):
-                    viewState = XFeedViewState(error: true, errorMessage: "Oops, we got an error, please try again.")
+                    await self?.updateViewState(XFeedViewState(error: true, errorMessage: "Oops, we got an error, please try again."))
                 case .success(_, _):
-                    fetchXs()
-                    viewState = XFeedViewState(success: true)
+                    self?.fetchXs()
+                    await self?.updateViewState(XFeedViewState(success: true))
                 }
             case .unfollow(userId: let userId):
                 switch await UserServices.shared.unfollowUser(userIdToUnfollow: userId) {
                 case .error(_):
-                    viewState = XFeedViewState(error: true, errorMessage: "Unfollow request couldn't be processed. Please try again.")
+                    await self?.updateViewState(XFeedViewState(error: true, errorMessage: "Unfollow request couldn't be processed. Please try again."))
                 case .success(_, _):
+                    self?.fetchXs(refetchXs: true)
                     break
                 }
             case .follow(userId:  _):
@@ -83,6 +80,26 @@ import FirebaseFirestore
                 break
             }
         }
+    }
+    
+    @MainActor
+    private func updateViewState(_ viewState: XFeedViewState) {
+        self.viewState = viewState
+    }
+    
+    @MainActor
+    private func updateFeedData(refetched: Bool, xList: [XData]) {
+        if refetched {
+            self.xDataList = xList
+        } else {
+            self.xDataList.append(contentsOf: xList)
+        }
+        
+    }
+    
+    @MainActor
+    private func updateFollowsList(followsList: [String]?) {
+        self.followsList = followsList ?? []
     }
     
     func checkIfItsOwnX(userId: String) -> Bool {

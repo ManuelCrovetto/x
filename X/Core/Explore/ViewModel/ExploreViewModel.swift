@@ -16,17 +16,12 @@ import Observation
     
     private var searchUsersJob: Task<Void, Never>? = nil
     
-    init() {
-        print("hello?")
-        searchUsers()
-    }
-    
     func searchUsers() {
         searchUsersJob?.cancel()
         searchUsersJob = Task { [weak self] in
             do {
                 await self?.updateViewState(viewState: ExploreViewState(loading: true))
-                try await Task.sleep(nanoseconds: 2_000_000_000)
+                try await Task.sleep(seconds: 1)
                 switch await UserServices.shared.searchUsers(query: self?.query ?? "") {
                 case .error(_) :
                 
@@ -71,7 +66,7 @@ import Observation
                     searchUsers()
                     break
                 }
-            case .viewProfile(userId: let _):
+            case .viewProfile(_):
                 break
             }
         }

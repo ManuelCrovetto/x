@@ -42,6 +42,7 @@ struct FeedView: View {
                         ProgressView()
                     }
                 }
+                
             }
         }
     }
@@ -50,10 +51,13 @@ struct FeedView: View {
         NavigationStack {
             ZStack {
                 feedBody
+                    .onAppear(perform: {
+                        vm.fetchXs(refetchXs: true)
+                    })
                 .refreshable {
                     withAnimation(.easeIn) {
                         vm.showsProgressViewInCenter = false
-                        vm.fetchXs()
+                        vm.fetchXs(refetchXs: true)
                     }
                 }
                 .scrollIndicators(.hidden)
@@ -88,7 +92,7 @@ struct FeedView: View {
                 }
                 .navigationBarTitleDisplayMode(.inline)
             }
-            
+            .animation(.easeIn, value: vm.viewState.loading)
         }
         .environment(vm)
         .ignoresSafeArea()

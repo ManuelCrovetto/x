@@ -46,8 +46,12 @@ struct ExploreView: View {
             VStack {
                 searchTextField
                 list
+                    .onAppear(perform: {
+                        vm.searchUsers()
+                    })
                     .frame(maxHeight: .infinity)
             }
+            .animation(/*@START_MENU_TOKEN@*/.easeIn/*@END_MENU_TOKEN@*/, value: vm.viewState.loading)
             .onChange(of: vm.query) {
                 vm.searchUsers()
             }

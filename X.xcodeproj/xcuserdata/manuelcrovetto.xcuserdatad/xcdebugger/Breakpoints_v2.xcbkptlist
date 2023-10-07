@@ -364,8 +364,8 @@
             filePath = "X/Core/Feed/View/FeedView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -444,9 +444,9 @@
             filePath = "X/Services/UserServices.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "checkUsernameAvailability(newUsername:doesExists:)"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "checkUsernameAvailability(newUsername:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -508,8 +508,8 @@
             filePath = "X/Core/Feed/View/XView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -1269,8 +1269,8 @@
             filePath = "X/Core/Feed/ViewModel/FeedViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "shouldLoadMoreTweets(xId:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1285,8 +1285,8 @@
             filePath = "X/Core/Feed/ViewModel/FeedViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "shouldLoadMoreTweets(xId:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1301,8 +1301,8 @@
             filePath = "X/Core/Feed/ViewModel/FeedViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "shouldLoadMoreTweets(xId:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1317,8 +1317,8 @@
             filePath = "X/Core/Feed/ViewModel/FeedViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "shouldLoadMoreTweets(xId:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1333,8 +1333,8 @@
             filePath = "X/Core/Explore/ViewModel/ExploreViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "followAction(followAction:)"
             landmarkType = "7">
             <Locations>
@@ -1471,8 +1471,8 @@
             filePath = "X/Core/Explore/ViewModel/ExploreViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "followAction(followAction:)"
             landmarkType = "7">
             <Locations>
@@ -1535,8 +1535,8 @@
             filePath = "X/Core/Feed/View/XView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "unfollowButton"
             landmarkType = "24">
          </BreakpointContent>
