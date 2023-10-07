@@ -14,7 +14,7 @@ import FirebaseFirestore
 @Observable class XCreationViewModel {
     
     var viewState = XCreationViewState()
-    var userData: UserData? = nil
+    var userData: UserDataFireStoreEntity? = nil
     var xBody: String = ""
     
     private var createXJob: Task<Void, Never>? = nil
@@ -58,7 +58,7 @@ import FirebaseFirestore
         self.userData = userData
     }
     
-    private func provideUserData() async -> UserData? {
+    private func provideUserData() async -> UserDataFireStoreEntity? {
         do {
             let response = try await UserServices.shared.getUserData()
             switch response {

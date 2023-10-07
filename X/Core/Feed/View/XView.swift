@@ -13,6 +13,7 @@ struct XView: View {
     let url: String?
     let nickName: String
     let username: String
+    let timeAgo: String
     let xBody: String
     let comments: [XData]
     let reposts: [String]
@@ -91,7 +92,7 @@ struct XView: View {
                         Text(username)
                             .font(.footnote)
                             .fontWeight(.light)
-                        Text("· 10m")
+                        Text(timeAgo)
                             .font(.caption)
                             .foregroundStyle(Color(.systemGray3))
                         Spacer()
@@ -110,6 +111,7 @@ struct XView: View {
                     Text(xBody)
                         .font(.footnote)
                         .multilineTextAlignment(.leading)
+                        .padding(.vertical, 8)
                     
                     HStack() {
                         HStack(spacing: 4) {
@@ -149,9 +151,7 @@ struct XView: View {
                                 .font(.footnote)
                                 .fontWeight(.light)
                                 .foregroundStyle(.black)
-                                
                         }
-                       
                         Spacer()
                         Button {
                             
@@ -159,9 +159,10 @@ struct XView: View {
                             CustomIcon(systemName: "chart.bar", height: iconSize, width: iconSize, foregroundStyle: .base)
                         }
                     }
-                    .padding(.vertical, 8)
                 }
             }
+            .padding(.vertical, 8)
+            .padding(.horizontal, 16)
             Divider()
         }
         .sheet(isPresented: $isGenericXOptionsPresented) {
@@ -195,12 +196,13 @@ struct XView: View {
             .presentationDetents([.fraction(0.1)])
             .presentationDragIndicator(.visible)
         })
-        .padding()
+        
+        
     }
 }
 
 #Preview {
-    XView(xId: "", url: "", nickName: "Kirstini", username: "@kirstin", xBody: "I'm so annoying hahaha", comments: [], reposts: [], likes: [], userId: "") { action in
+    XView(xId: "", url: "", nickName: "Kirstini", username: "@kirstin", timeAgo: "16s ago", xBody: "I'm so annoying hahaha", comments: [], reposts: [], likes: [], userId: "") { action in
         
     }
     .environment(FeedViewModel())

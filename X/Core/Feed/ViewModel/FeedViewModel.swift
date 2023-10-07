@@ -24,11 +24,15 @@ import FirebaseFirestore
         fetchXs()
     }
     
-    func fetchXs() {
+    func fetchXs(refetchXs: Bool = false) {
         fetchJob?.cancel()
         fetchJob = Task {
             viewState = XFeedViewState(loading: true)
-            let response = await XServices.shared.fetchXs(payload: xPayload, lastDocument: nil)
+            if refetchXs {
+                lastDocument = nil
+                xDataList.removeAll()
+            }
+            let response = await XServices.shared.fetchXs(payload: xPayload, lastDocument: lastDocument)
             switch response {
             case .error(_):
                 print("\(self): Error fetching Xs.")
@@ -68,7 +72,7 @@ import FirebaseFirestore
                     viewState = XFeedViewState(success: true)
                 }
             case .unfollow(userId: let userId):
-                switch await XServices.shared.unfollowUser(userIdToUnfollow: userId) {
+                switch await UserServices.shared.unfollowUser(userIdToUnfollow: userId) {
                 case .error(_):
                     viewState = XFeedViewState(error: true, errorMessage: "Unfollow request couldn't be processed. Please try again.")
                 case .success(_, _):
@@ -87,5 +91,34 @@ import FirebaseFirestore
     
     func checkIfCurrentUserFollowsXOwner(userId: String) -> Bool {
         return followsList.contains(userId)
+    }
+    
+    func timeAgoPosted(_ timestamp: Timestamp) -> String {
+        let currentDate = Timestamp(date: Date())
+        let timeIntervalSincePosted = currentDate.dateValue().timeIntervalSince(timestamp.dateValue())
+        let secondsPassed = Int(timeIntervalSincePosted)
+        var timeAgo = ""
+        if secondsPassed < 60 {
+            timeAgo = "\(secondsPassed)s ago"
+        }
+        if secondsPassed > 60 {
+            let mins = Int(ceil(Double(secondsPassed / 60)))
+            timeAgo = "\(mins)m ago"
+        }
+        if secondsPassed > 3600 {
+            let hours = Int(ceil(Double(secondsPassed / 3600)))
+            timeAgo = "\(hours)h ago"
+        }
+        if secondsPassed > 86400 {
+            let days = Int(ceil(Double(secondsPassed / 86400)))
+            timeAgo = "yesterday"
+        }
+        if secondsPassed > 172800 {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd/MM/yyyy"
+            let date = dateFormatter.string(from: timestamp.dateValue())
+            timeAgo = date
+        }
+        return timeAgo
     }
 }

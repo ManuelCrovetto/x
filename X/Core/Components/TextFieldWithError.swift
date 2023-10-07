@@ -26,7 +26,15 @@ struct TextFieldWithError: View {
                     .frame(width: 20, height: 20)
                     .foregroundStyle(.gray)
                 TextField(hint, text: $text)
+                    .frame(maxWidth: .infinity)
+                if !text.isEmpty {
+                    CustomIcon(systemName: "x.circle", height: 20, width: 20, foregroundStyle: .gray)
+                        .onTapGesture {
+                            text = ""
+                        }
+                }
             }
+            .animation(.easeIn, value: text.isEmpty)
         } else {
             TextField(hint, text: $text)
         }
@@ -53,6 +61,6 @@ struct TextFieldWithError: View {
 }
 
 #Preview {
-    TextFieldWithError(hint: "Password", text: .constant(""), isError: true, errorMessage: "Error messageweoiedoiwejidjwedjwidjoijdowjdowjeojowejdowjedojdoijwe", icon: "lock", isRegularTextField: true, leadingPadding: nil)
+    TextFieldWithError(hint: "Password", text: .constant("hola"), isError: true, errorMessage: "Error", icon: "lock", isRegularTextField: true, leadingPadding: nil)
 }
 

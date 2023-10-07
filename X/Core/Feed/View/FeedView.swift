@@ -9,29 +9,38 @@ import Observation
 import SwiftUI
 
 struct FeedView: View {
+    
+    var onNavigationAction: (NavigationStates) -> ()
+    
     @State private var vm = FeedViewModel()
-    @Environment(XTabViewModel.self) private var viewModel
+    @Environment(XTabViewModel.self) private var xTabviewViewModel
     
     @ViewBuilder private var feedBody: some View {
         if vm.viewState.loading && vm.showsProgressViewInCenter {
-            
             ProgressView()
         } else {
-            ScrollView {
-                LazyVStack {
-                    ForEach(vm.xDataList, id: \.id) { x in
-                        XView(xId:x.id.orEmpty() ,url: nil, nickName: x.nickName, username: "@\(x.username)", xBody: x.body, comments: x.comments, reposts: x.reposts, likes: x.reposts, userId: x.userId) { action in
-                            vm.handleXAction(actions: action)
-                        }.onAppear {
-                            withAnimation(.easeIn) {
-                                vm.shouldLoadMoreTweets(xId: x.id ?? "")
+            if vm.xDataList.isEmpty {
+                EmptyView(
+                    onAction: {
+                        onNavigationAction(.explore)
+                    }
+                )
+            } else {
+                ScrollView {
+                    LazyVStack {
+                        ForEach(vm.xDataList, id: \.id) { x in
+                            XView(xId:x.id.orEmpty() ,url: nil, nickName: x.nickName, username: "@\(x.username)", timeAgo: vm.timeAgoPosted(x.date), xBody: x.body, comments: x.comments, reposts: x.reposts, likes: x.reposts, userId: x.userId) { action in
+                                vm.handleXAction(actions: action)
+                            }.onAppear {
+                                withAnimation(.easeIn) {
+                                    vm.shouldLoadMoreTweets(xId: x.id ?? "")
+                                }
                             }
-                            
                         }
                     }
-                }
-                if vm.viewState.loading {
-                    ProgressView()
+                    if vm.viewState.loading {
+                        ProgressView()
+                    }
                 }
             }
         }
@@ -59,7 +68,7 @@ struct FeedView: View {
                         Button {
                             withAnimation(.easeIn) {
                                 vm.showsProgressViewInCenter = true
-                                vm.fetchXs()
+                                vm.fetchXs(refetchXs: true)
                             }
                         } label: {
                             Image(systemName: "arrow.counterclockwise")
@@ -69,7 +78,7 @@ struct FeedView: View {
                     ToolbarItem(placement: .topBarLeading) {
                         Button {
                             withAnimation(.spring) {
-                                viewModel.isDrawerOpen.toggle()
+                                xTabviewViewModel.isDrawerOpen.toggle()
                             }
                         } label: {
                             Image(systemName: "person")
@@ -87,6 +96,10 @@ struct FeedView: View {
 }
 
 #Preview {
-    FeedView()
+    FeedView(
+        onNavigationAction: { navigateTo in
+            
+        }
+    )
         .environment(XTabViewModel())
 }

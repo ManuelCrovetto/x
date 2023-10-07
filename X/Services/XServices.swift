@@ -59,24 +59,6 @@ class XServices {
             return .error(error.localizedDescription)
         }
     }
-    
-    func unfollowUser(userIdToUnfollow: String) async -> Response<(), ()> {
-        do {
-            if let userId = AuthServices.shared.userSession?.uid {
-                try await db.collection("users")
-                    .document(userId)
-                    .collection("follows")
-                    .document(userIdToUnfollow)
-                    .delete()
-                return .success(())
-            } else {
-                return .error("Error in \(self): UserId is nil.")
-            }
-        } catch {
-            print("Error in \(self): Unfollow request couldnt be completed.")
-            return .error(error.localizedDescription)
-        }
-    }
 
     private func setDocumentData(documentReference: DocumentReference, data: XData) async {
         do {

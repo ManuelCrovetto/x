@@ -284,8 +284,8 @@
             filePath = "X/Core/Components/TextFieldWithError.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -364,8 +364,8 @@
             filePath = "X/Core/Feed/View/FeedView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -380,8 +380,8 @@
             filePath = "X/Core/Toolbar/XTabView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
             landmarkName = "body"
             landmarkType = "24">
             <Locations>
@@ -508,8 +508,8 @@
             filePath = "X/Core/Feed/View/XView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
@@ -524,8 +524,8 @@
             filePath = "X/Services/XServices.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "getAllXsOfFollows(followsList:payload:lastDocument:)"
             landmarkType = "7">
             <Locations>
@@ -632,8 +632,8 @@
             filePath = "X/Services/XServices.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "getAllXsOfFollows(followsList:payload:lastDocument:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -648,8 +648,8 @@
             filePath = "X/Services/XServices.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "getAllXsOfFollows(followsList:payload:lastDocument:)"
             landmarkType = "7">
             <Locations>
@@ -746,6 +746,21 @@
                   endingLineNumber = "43"
                   offsetFromSymbolStart = "144">
                </Location>
+               <Location
+                  uuid = "E5AD522C-433A-4E5F-94EB-154ADDB84005 - 30190012bc5d345"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for X.XServices.deleteX(userId: Swift.String, xId: Swift.String) async -&gt; X.Response&lt;(), ()&gt;"
+                  moduleName = "X"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Services/XServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "144">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -792,6 +807,21 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "47"
                   endingLineNumber = "47"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "B009E67E-2AC3-4D7A-A7F2-920348D831FB - b26f9bc666366bcd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for X.XServices.deleteX(userId: Swift.String, xId: Swift.String) async -&gt; X.Response&lt;(), ()&gt;"
+                  moduleName = "X"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Services/XServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
                   offsetFromSymbolStart = "88">
                </Location>
             </Locations>
@@ -857,6 +887,21 @@
                   endingLineNumber = "49"
                   offsetFromSymbolStart = "1360">
                </Location>
+               <Location
+                  uuid = "C1A12482-0772-4C66-80F3-9637738B5618 - 30190012bc5d203"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for X.XServices.deleteX(userId: Swift.String, xId: Swift.String) async -&gt; X.Response&lt;(), ()&gt;"
+                  moduleName = "X"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Services/XServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "1360">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -918,6 +963,21 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "55"
                   endingLineNumber = "55"
+                  offsetFromSymbolStart = "204">
+               </Location>
+               <Location
+                  uuid = "436532E8-F58C-4107-B8FF-B818078B07B7 - 9a2487bb3c4926d3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for X.XServices.deleteX(userId: Swift.String, xId: Swift.String) async -&gt; X.Response&lt;(), ()&gt;"
+                  moduleName = "X"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Services/XServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
                   offsetFromSymbolStart = "204">
                </Location>
             </Locations>
@@ -1136,6 +1196,66 @@
                   endingLineNumber = "45"
                   offsetFromSymbolStart = "88">
                </Location>
+               <Location
+                  uuid = "5C272AC2-2635-4375-8065-D389DA52E5D8 - 30190012bc5d3a6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for X.XServices.deleteX(userId: Swift.String, xId: Swift.String) async -&gt; X.Response&lt;(), ()&gt;"
+                  moduleName = "X"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Services/XServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "1092">
+               </Location>
+               <Location
+                  uuid = "5C272AC2-2635-4375-8065-D389DA52E5D8 - 4dac252bb58c6d97"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) await resume partial function for X.XServices.deleteX(userId: Swift.String, xId: Swift.String) async -&gt; X.Response&lt;(), ()&gt;"
+                  moduleName = "X"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Services/XServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "60">
+               </Location>
+               <Location
+                  uuid = "5C272AC2-2635-4375-8065-D389DA52E5D8 - b26f9bc666366b8b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for X.XServices.deleteX(userId: Swift.String, xId: Swift.String) async -&gt; X.Response&lt;(), ()&gt;"
+                  moduleName = "X"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Services/XServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "5C272AC2-2635-4375-8065-D389DA52E5D8 - 9a2487bb3c49278d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for X.XServices.deleteX(userId: Swift.String, xId: Swift.String) async -&gt; X.Response&lt;(), ()&gt;"
+                  moduleName = "X"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Services/XServices.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "88">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -1149,8 +1269,8 @@
             filePath = "X/Core/Feed/ViewModel/FeedViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "shouldLoadMoreTweets(xId:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1159,14 +1279,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "4E7A2826-D1C8-41D7-AB91-2117ED1ECD4F"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "X/Core/Feed/ViewModel/FeedViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
             landmarkName = "shouldLoadMoreTweets(xId:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1175,14 +1295,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "7B673A29-B494-4843-93C1-2236D8CE2684"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "X/Core/Feed/ViewModel/FeedViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "shouldLoadMoreTweets(xId:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1191,16 +1311,234 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "07F3E51E-E5F1-4489-84CE-9401181DAF1D"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "X/Core/Feed/ViewModel/FeedViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "shouldLoadMoreTweets(xId:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1BB9C21A-3CBF-4E66-A1F8-C364E90AD78E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "X/Core/Explore/ViewModel/ExploreViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "followAction(followAction:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1BB9C21A-3CBF-4E66-A1F8-C364E90AD78E - cd9bbff47764963f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in X.ExploreViewModel.followAction(followAction: X.FollowActions) -&gt; ()"
+                  moduleName = "X"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Core/Explore/ViewModel/ExploreViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "1BB9C21A-3CBF-4E66-A1F8-C364E90AD78E - cd9bbff47764963f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in X.ExploreViewModel.followAction(followAction: X.FollowActions) -&gt; ()"
+                  moduleName = "X"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Core/Explore/ViewModel/ExploreViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "108">
+               </Location>
+               <Location
+                  uuid = "1BB9C21A-3CBF-4E66-A1F8-C364E90AD78E - c667f04d31125a39"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in X.ExploreViewModel.followAction(followAction: X.FollowActions) -&gt; ()"
+                  moduleName = "X"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Core/Explore/ViewModel/ExploreViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "180">
+               </Location>
+               <Location
+                  uuid = "1BB9C21A-3CBF-4E66-A1F8-C364E90AD78E - 38c02526ccc91e3b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for closure #1 @Sendable () async -&gt; () in X.ExploreViewModel.followAction(followAction: X.FollowActions) -&gt; ()"
+                  moduleName = "X"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Core/Explore/ViewModel/ExploreViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "180">
+               </Location>
+               <Location
+                  uuid = "1BB9C21A-3CBF-4E66-A1F8-C364E90AD78E - 622dcbffc88b1032"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in X.ExploreViewModel.followAction(followAction: X.UserActions) -&gt; ()"
+                  moduleName = "X"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Core/Explore/ViewModel/ExploreViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "1BB9C21A-3CBF-4E66-A1F8-C364E90AD78E - 622dcbffc88b1032"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for closure #1 @Sendable () async -&gt; () in X.ExploreViewModel.followAction(followAction: X.UserActions) -&gt; ()"
+                  moduleName = "X"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Core/Explore/ViewModel/ExploreViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "1BB9C21A-3CBF-4E66-A1F8-C364E90AD78E - 43521b703abed4cc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in X.ExploreViewModel.followAction(followAction: X.UserActions) -&gt; ()"
+                  moduleName = "X"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Core/Explore/ViewModel/ExploreViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "180">
+               </Location>
+               <Location
+                  uuid = "1BB9C21A-3CBF-4E66-A1F8-C364E90AD78E - 9cc2a8e16c6198ce"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(5) suspend resume partial function for closure #1 @Sendable () async -&gt; () in X.ExploreViewModel.followAction(followAction: X.UserActions) -&gt; ()"
+                  moduleName = "X"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Core/Explore/ViewModel/ExploreViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "58"
+                  endingLineNumber = "58"
+                  offsetFromSymbolStart = "180">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8D085A8C-0209-4C59-B457-9E94CF36110F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "X/Core/Explore/ViewModel/ExploreViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "followAction(followAction:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8D085A8C-0209-4C59-B457-9E94CF36110F - b600a94ab527e819"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "X.ExploreViewModel.followAction(followAction: X.FollowActions) -&gt; ()"
+                  moduleName = "X"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Core/Explore/ViewModel/ExploreViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "144">
+               </Location>
+               <Location
+                  uuid = "8D085A8C-0209-4C59-B457-9E94CF36110F - b5eb4ebce8e8026f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "X.ExploreViewModel.followAction(followAction: X.UserActions) -&gt; ()"
+                  moduleName = "X"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/manuelcrovetto/XCodeProjects/X/X/Core/Explore/ViewModel/ExploreViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "128">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D085DB8E-4045-4533-88A9-CC05A95D3401"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "X/Core/Components/actions/FollowActions.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "7"
+            endingLineNumber = "7"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "835CF591-5EA2-4F98-8370-8F0757620297"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "X/Core/Feed/View/XView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "unfollowButton"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

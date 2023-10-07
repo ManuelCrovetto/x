@@ -8,30 +8,70 @@
 import SwiftUI
 
 struct UserCell: View {
+    
+    var username: String = "macro"
+    var currentlyFollows = false
+    var nickName = "Manuel"
+    var userId = ""
+    var isCurrentUser = false
+    
+    var followAction: (UserActions) -> ()
+    
+    @ViewBuilder private var followButton: some View {
+        if currentlyFollows {
+            Button {
+                followAction(.unfollow(userId: userId))
+            } label: {
+                Text("Unfollow")
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.red)
+            }
+        } else {
+            if isCurrentUser {
+                Button {
+                    followAction(.viewProfile(userId: userId))
+                } label: {
+                    Text("View profile")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.base)
+                }
+            } else {
+                Button {
+                    followAction(.follow(userId: userId))
+                } label: {
+                    Text("Follow")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.base)
+                }
+            }
+            
+        }
+    }
+    
     var body: some View {
         HStack {
             CircularProfileImageView()
             VStack(alignment: .leading) {
-                Text("dersarco")
+                Text("@\(username)")
                     .fontWeight(.semibold)
-                Text("Carlos Muñoz")
-                
+                Text(nickName)
             }
             .font(.footnote)
             Spacer()
-            Text("Follow")
-                .font(.subheadline)
-                .fontWeight(.semibold)
-                .frame(width: 100, height: 32)
-                .overlay {
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color(.systemGray4), lineWidth: 1)
-                }
+            followButton
+                .buttonStyle(.bordered)
+                .buttonBorderShape(.roundedRectangle)
+                .controlSize(.mini)
         }
         .padding(.horizontal)
     }
 }
 
 #Preview {
-    UserCell()
+    UserCell { followAction in
+        
+    }
 }

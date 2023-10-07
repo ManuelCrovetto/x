@@ -9,23 +9,48 @@ import SwiftUI
 
 struct ExploreView: View {
     
-    @State private var searchText = ""
+    @State private var vm: ExploreViewModel = ExploreViewModel()
     
-    
-    var body: some View {
-        NavigationStack {
+    @ViewBuilder private var list: some View {
+        if vm.viewState.loading {
+            ProgressView()
+        } else {
             ScrollView {
                 LazyVStack {
-                    ForEach(0...4, id: \.self) { user in
+                    ForEach(vm.usersList, id: \.id) { user in
                         VStack {
-                            UserCell()
+                            UserCell(
+                                username: user.username,
+                                currentlyFollows: user.doesCurrentUserFollowsThisUser,
+                                nickName: user.nickname,
+                                userId: user.id, isCurrentUser: vm.isCurrentUser(userId: user.id)) { followAction in
+                                    vm.followAction(followAction: followAction)
+                                }
+                            
                             Divider()
                         }
                         .padding(.vertical, 4)
                     }
                 }
             }
-            .searchable(text: $searchText, prompt: "Search")
+        }
+    }
+    
+    @ViewBuilder private var searchTextField: some View {
+        TextFieldWithError(hint: "Search", text: $vm.query, isError: false, errorMessage: "", icon: "magnifyingglass")
+            .padding(.vertical, 16)
+    }
+
+    var body: some View {
+        NavigationStack {
+            VStack {
+                searchTextField
+                list
+                    .frame(maxHeight: .infinity)
+            }
+            .onChange(of: vm.query) {
+                vm.searchUsers()
+            }
             .navigationTitle("Search")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -33,21 +58,21 @@ struct ExploreView: View {
                     Image(.xLogo)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 40, height: 40)
+                        .frame(width: 32, height: 32)
+                        .padding()
                 }
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
                         withAnimation(.spring) {
-                            
                         }
                     } label: {
                         Image(systemName: "person")
                             .foregroundStyle(.black)
                     }
                 }
-                
             }
         }
+        
     }
 }
 
