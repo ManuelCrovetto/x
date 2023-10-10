@@ -29,6 +29,7 @@ struct EmptyView: View {
                     CustomIcon(systemName: "magnifyingglass", height: 16, width: 16, foregroundStyle: .surface)
                     Text("Explore")
                 }
+                .foregroundStyle(.surface)
             }
         }
     }

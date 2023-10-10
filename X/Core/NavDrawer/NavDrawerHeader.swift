@@ -9,6 +9,10 @@ import SwiftUI
 
 struct NavDrawerHeader: View {
     
+    var nickName: String
+    var username: String
+    var follows: Int
+    var followers: Int
     @State var showOptionsDialog = false
     var action: () -> ()
     
@@ -32,16 +36,16 @@ struct NavDrawerHeader: View {
                 }
             }
             .padding(.bottom, 8)
-            Text("Manuel")
+            Text(nickName)
                 .font(.headline)
                 .fontWeight(.semibold)
                 
-            Text("@manuel")
+            Text("@\(username)")
                 .font(.subheadline)
                 .fontWeight(.light)
                 .foregroundStyle(.gray)
                 .padding(.bottom, 8)
-            Followers()
+            Followers(follows: follows, followers: followers)
         }
         .sheet(isPresented: $showOptionsDialog, content: {
             AccountsSheet {
@@ -56,7 +60,7 @@ struct NavDrawerHeader: View {
 }
 
 #Preview {
-    NavDrawerHeader{
+    NavDrawerHeader(nickName: "Manuel", username: "macro", follows: 10, followers: 10000){
         
     }
 }

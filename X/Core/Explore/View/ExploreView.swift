@@ -26,10 +26,7 @@ struct ExploreView: View {
                                 userId: user.id, isCurrentUser: vm.isCurrentUser(userId: user.id)) { followAction in
                                     vm.followAction(followAction: followAction)
                                 }
-                            
-                            Divider()
                         }
-                        .padding(.vertical, 4)
                     }
                 }
             }

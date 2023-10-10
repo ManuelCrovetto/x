@@ -13,17 +13,19 @@ struct XTabView: View {
     @State private var isCreateXPresented = false
     @State private var viewModel = XTabViewModel()
     
+    
     private let feedTabNumber = 0
     private let exploreTabNumber = 1
     private let createTabNumber = 2
     private let activityTabNumber = 3
     private let profileTabNumber = 4
     
-    
     var body: some View {
+        
         ZStack {
             if viewModel.isDrawerOpen {
                 NavDrawer()
+                    .environment(viewModel)
             }
             
             TabView(selection: $selectedTab) {
@@ -83,9 +85,8 @@ struct XTabView: View {
                     
                 }
             }
-            
             .cornerRadius(viewModel.isDrawerOpen ? 20 : 0)
-            .offset(x: viewModel.isDrawerOpen ? 300 : 0, y: viewModel.isDrawerOpen ? 44 : 0)
+            .offset(x: viewModel.isDrawerOpen ? viewModel.assignOffset(width: UIScreen.main.bounds.width) : 0, y: viewModel.isDrawerOpen ? 44 : 0)
             .scaleEffect(viewModel.isDrawerOpen ? 0.8 : 1)
             .onChange(of: selectedTab) {
                 isCreateXPresented = selectedTab == createTabNumber
@@ -95,12 +96,12 @@ struct XTabView: View {
             })
             .tint(.base)
             .ignoresSafeArea()
+            
         }
-        
+        .onAppear(perform: {
+            viewModel.getDetailedUserData()
+        })
         .environment(viewModel)
-        
-        
-        
     }
 }
 

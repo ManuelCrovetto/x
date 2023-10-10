@@ -21,7 +21,7 @@ import Observation
         searchUsersJob = Task { [weak self] in
             do {
                 await self?.updateViewState(viewState: ExploreViewState(loading: true))
-                try await Task.sleep(seconds: 1)
+                try await Task.sleep(seconds: 0.5)
                 switch await UserServices.shared.searchUsers(query: self?.query ?? "") {
                 case .error(_) :
                 

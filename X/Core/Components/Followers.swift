@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct Followers: View {
+    
+    var follows: Int
+    var followers: Int
+    
     var body: some View {
         HStack(spacing: 8) {
             HStack(spacing: 4) {
-                Text("1k")
+                Text(follows.description)
                     .font(.subheadline)
                     .fontWeight(.semibold)
                 Text("Following")
@@ -20,7 +24,7 @@ struct Followers: View {
             }
             
             HStack(spacing: 4) {
-                Text("10k")
+                Text(followers.description)
                     .font(.subheadline)
                     .fontWeight(.semibold)
                 Text("Followers")
@@ -32,5 +36,5 @@ struct Followers: View {
 }
 
 #Preview {
-    Followers()
+    Followers(follows: 5, followers: 10000)
 }

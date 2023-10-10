@@ -13,5 +13,19 @@ import Observation
     var isDrawerOpen = false
     var hasAppearedOnce = false
     
+    var isPresentingDrawerNavigations = false
+    
+    
+    func assignOffset(width: CGFloat) -> CGFloat {
+        return if isPresentingDrawerNavigations {
+            1000
+        } else {
+            300
+        }
+    }
+    
+    func getDetailedUserData() {
+        AuthServices.shared.fetchUsersDetailedData()
+    }
     
 }

@@ -60,7 +60,7 @@ class UserServices {
                 }
             let usersList = try await listWithoutFollowingFlag.asyncMap { userData in
                 let followIdDocument = try await usersDocumentPath.document(AuthServices.shared.userSession?.uid ?? "").collection("follows").document(userData.id ?? "").getDocument()
-                return UserData(id: userData.id.orEmpty(), email: userData.email, nickname: userData.nickname, username: userData.username, doesCurrentUserFollowsThisUser: followIdDocument.exists)
+                return UserData(id: userData.id.orEmpty(), email: userData.email, nickname: userData.nickname, username: userData.username, doesCurrentUserFollowsThisUser: followIdDocument.exists, bio: userData.bio)
             }
             print("DEBG: \(usersList)")
             return .success(usersList)

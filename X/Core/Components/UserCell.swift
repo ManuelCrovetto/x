@@ -52,21 +52,25 @@ struct UserCell: View {
     }
     
     var body: some View {
-        HStack {
-            CircularProfileImageView()
-            VStack(alignment: .leading) {
-                Text("@\(username)")
-                    .fontWeight(.semibold)
-                Text(nickName)
+        VStack {
+            HStack {
+                CircularProfileImageView()
+                VStack(alignment: .leading) {
+                    Text("@\(username)")
+                        .fontWeight(.semibold)
+                    Text(nickName)
+                }
+                .font(.footnote)
+                Spacer()
+                followButton
+                    .buttonStyle(.bordered)
+                    .buttonBorderShape(.roundedRectangle)
+                    .controlSize(.mini)
             }
-            .font(.footnote)
-            Spacer()
-            followButton
-                .buttonStyle(.bordered)
-                .buttonBorderShape(.roundedRectangle)
-                .controlSize(.mini)
+            .padding(.horizontal)
+            .padding(.vertical, 8)
+            Divider()
         }
-        .padding(.horizontal)
     }
 }
 

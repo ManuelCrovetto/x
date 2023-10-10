@@ -13,7 +13,7 @@ import FirebaseFirestore
     private var fetchJob: Task<Void, Never>? = nil
     private var handleXActionJob: Task<Void, Never>? = nil
     var viewState = XFeedViewState()
-    var xDataList: [XData] = []
+    var xDataList: [XData]? = []
     var followsList: [String] = []
     var showsProgressViewInCenter = true
     var isLoadingMoreTweets = false
@@ -43,16 +43,14 @@ import FirebaseFirestore
     }
     
     func shouldLoadMoreTweets(xId: String) {
+        guard let xDataList else { return }
         if let index: Int = xDataList.firstIndex(where: {$0.id == xId})  {
             if index+1 == xPayload {
                 xPayload += 10
                 showsProgressViewInCenter = false
                 fetchXs()
             }
-        } else {
-            print("aha")
         }
-        
     }
     
     func handleXAction(actions: XActions) {
@@ -89,10 +87,15 @@ import FirebaseFirestore
     
     @MainActor
     private func updateFeedData(refetched: Bool, xList: [XData]) {
+        if xList.isEmpty {
+            self.xDataList = nil
+            return
+        }
+        
         if refetched {
             self.xDataList = xList
         } else {
-            self.xDataList.append(contentsOf: xList)
+            self.xDataList?.append(contentsOf: xList)
         }
         
     }
@@ -127,14 +130,10 @@ import FirebaseFirestore
             timeAgo = "\(hours)h ago"
         }
         if secondsPassed > 86400 {
-            let days = Int(ceil(Double(secondsPassed / 86400)))
             timeAgo = "yesterday"
         }
         if secondsPassed > 172800 {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd/MM/yyyy"
-            let date = dateFormatter.string(from: timestamp.dateValue())
-            timeAgo = date
+            timeAgo = timestamp.formatToNormalDate()
         }
         return timeAgo
     }

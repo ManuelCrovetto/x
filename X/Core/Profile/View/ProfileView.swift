@@ -17,6 +17,16 @@ struct ProfileView: View {
         return UIScreen.main.bounds.width / count
     }
     
+    private var vm = ProfileViewModel()
+    
+    private var nickName = AuthServices.shared.userDetails?.userData.nickname ?? ""
+    private var username = "@\(AuthServices.shared.userDetails?.userData.username ?? "")"
+    private var bio = AuthServices.shared.userDetails?.userData.bio ?? ""
+    private var joined = AuthServices.shared.userDetails?.joinedDate
+    private var follows = AuthServices.shared.userDetails?.followsCount ?? 0
+    private var followers = AuthServices.shared.userDetails?.followersCount ?? 0
+    
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -26,10 +36,10 @@ struct ProfileView: View {
                             VStack(alignment: .leading, spacing: 4) {
                                 CircularProfileImageView()
                                 VStack(alignment: .leading) {
-                                    Text("Der")
+                                    Text(nickName)
                                         .font(.title2)
                                         .fontWeight(.semibold)
-                                    Text("@dersarco")
+                                    Text(username)
                                         .font(.subheadline)
                                         .fontWeight(.light)
                                 }
@@ -42,29 +52,31 @@ struct ProfileView: View {
                                 Text("Edit profile")
                                     .font(.subheadline)
                                     .fontWeight(.semibold)
-                                    .foregroundStyle(.black)
+                                    .foregroundStyle(.base)
                                     .padding(.vertical, 8)
                                     .padding(.horizontal, 16)
                                     .overlay {
                                         Capsule(style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
-                                            .stroke(Color.black, lineWidth: 1)
+                                            .stroke(Color.base, lineWidth: 1)
                                     }
                             }
                         }
-                        VStack {
-                            Text("Me dedico a trolear. Y tu?")
-                                .font(.headline)
-                                .fontWeight(.regular)
+                        if !bio.isEmpty {
+                            VStack {
+                                Text(bio)
+                                    .font(.headline)
+                                    .fontWeight(.regular)
+                            }
                         }
                         HStack {
                             Image(systemName: "calendar")
                                 .resizable()
                                 .frame(width: 12, height: 12)
-                            Text("Joined September 2018")
+                            Text("Joined on \(vm.provideJoinedDateFormatted(joinedDate: joined))")
                                 .font(.subheadline)
                                 .fontWeight(.light)
                         }
-                        Followers()
+                        Followers(follows: follows, followers: followers)
                     }
                 }
                 .padding()

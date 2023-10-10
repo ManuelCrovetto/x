@@ -10,6 +10,8 @@ import Observation
 
 @Observable class NavDrawerViewModel {
     
+    
+    
     func signOut() {
         do {
             try AuthServices.shared.signOut()

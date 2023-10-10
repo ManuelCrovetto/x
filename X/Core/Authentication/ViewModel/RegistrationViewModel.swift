@@ -101,7 +101,7 @@ import Observation
                 case .exists:
                     await self?.updateUsernameAvailability(.unavailable)
                 case .noExists:
-                    await self?.updateUsernameAvailability(.unavailable)
+                    await self?.updateUsernameAvailability(.available)
                 }
             } catch {
                 self?.usernameAvailability = .unavailable

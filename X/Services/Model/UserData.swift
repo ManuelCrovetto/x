@@ -13,12 +13,14 @@ struct UserData {
     let nickname: String
     let username: String
     let doesCurrentUserFollowsThisUser: Bool
+    let bio: String
     
-    init(id: String, email: String, nickname: String, username: String, doesCurrentUserFollowsThisUser: Bool) {
+    init(id: String, email: String, nickname: String, username: String, doesCurrentUserFollowsThisUser: Bool, bio: String) {
         self.id = id
         self.email = email
         self.nickname = nickname
         self.username = username
         self.doesCurrentUserFollowsThisUser = doesCurrentUserFollowsThisUser
+        self.bio = bio
     }
 }

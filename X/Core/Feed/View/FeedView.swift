@@ -19,7 +19,7 @@ struct FeedView: View {
         if vm.viewState.loading && vm.showsProgressViewInCenter {
             ProgressView()
         } else {
-            if vm.xDataList.isEmpty {
+            if !vm.viewState.loading && vm.xDataList == nil {
                 EmptyView(
                     onAction: {
                         onNavigationAction(.explore)
@@ -28,7 +28,7 @@ struct FeedView: View {
             } else {
                 ScrollView {
                     LazyVStack {
-                        ForEach(vm.xDataList, id: \.id) { x in
+                        ForEach(vm.xDataList ?? [], id: \.id) { x in
                             XView(xId:x.id.orEmpty() ,url: nil, nickName: x.nickName, username: "@\(x.username)", timeAgo: vm.timeAgoPosted(x.date), xBody: x.body, comments: x.comments, reposts: x.reposts, likes: x.reposts, userId: x.userId) { action in
                                 vm.handleXAction(actions: action)
                             }.onAppear {
