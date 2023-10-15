@@ -13,17 +13,14 @@ struct NavDrawerHeader: View {
     var username: String
     var follows: Int
     var followers: Int
+    var profileImageUrl: String
     @State var showOptionsDialog = false
     var action: () -> ()
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Image(systemName: "person")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 24, height: 24)
-                    .foregroundStyle(.gray)
+                CircularProfileImageView(url: profileImageUrl)
                 Spacer()
                 Button {
                     showOptionsDialog.toggle()
@@ -39,6 +36,7 @@ struct NavDrawerHeader: View {
             Text(nickName)
                 .font(.headline)
                 .fontWeight(.semibold)
+                .foregroundStyle(.black)
                 
             Text("@\(username)")
                 .font(.subheadline)
@@ -46,6 +44,7 @@ struct NavDrawerHeader: View {
                 .foregroundStyle(.gray)
                 .padding(.bottom, 8)
             Followers(follows: follows, followers: followers)
+                .foregroundStyle(.black)
         }
         .sheet(isPresented: $showOptionsDialog, content: {
             AccountsSheet {
@@ -60,7 +59,7 @@ struct NavDrawerHeader: View {
 }
 
 #Preview {
-    NavDrawerHeader(nickName: "Manuel", username: "macro", follows: 10, followers: 10000){
+    NavDrawerHeader(nickName: "Manuel", username: "macro", follows: 10, followers: 10000, profileImageUrl: ""){
         
     }
 }

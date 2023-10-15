@@ -16,4 +16,5 @@ struct UserDataFireStoreEntity: Identifiable, Codable {
     let username: String
     let joinDate: Timestamp
     let bio: String
+    let profileImageUrl: String
 }

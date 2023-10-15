@@ -18,3 +18,11 @@ struct XTextFieldsModifiers: ViewModifier {
             .padding(.horizontal, 24)
     }
 }
+
+struct XPlainTextFieldsModifiers: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .frame(height: 32)
+            .font(.subheadline)
+    }
+}

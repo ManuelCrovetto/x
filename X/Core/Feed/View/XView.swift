@@ -92,9 +92,11 @@ struct XView: View {
                         Text(nickName)
                             .font(.footnote)
                             .fontWeight(.semibold)
+                            .lineLimit(1)
                         Text(username)
                             .font(.footnote)
                             .fontWeight(.light)
+                            .lineLimit(1)
                         Text(timeAgo)
                             .font(.caption)
                             .foregroundStyle(Color(.systemGray3))
@@ -111,6 +113,7 @@ struct XView: View {
                                 .foregroundStyle(Color(.darkGray))
                         }
                     }
+                    
                     Text(xBody)
                         .font(.footnote)
                         .multilineTextAlignment(.leading)
@@ -205,7 +208,7 @@ struct XView: View {
 }
 
 #Preview {
-    XView(xId: "", url: "", nickName: "Kirstini", username: "@kirstin", timeAgo: "16s ago", xBody: "I'm so annoying hahaha", comments: [], reposts: [], likes: [], userId: "") { action in
+    XView(xId: "", url: "", nickName: "Freddy mercury Queen", username: "@macro_phoneeeeeeee", timeAgo: "10/10/2023", xBody: "I'm so annoying hahaha", comments: [], reposts: [], likes: [], userId: "") { action in
         
     }
     .environment(FeedViewModel())

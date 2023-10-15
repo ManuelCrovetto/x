@@ -7,10 +7,12 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseStorage
 
 class UserServices {
     
     private let db = Firestore.firestore()
+    private let storage = Storage.storage()
     
     static let shared = UserServices()
     
@@ -59,10 +61,21 @@ class UserServices {
                     try document.data(as: UserDataFireStoreEntity.self)
                 }
             let usersList = try await listWithoutFollowingFlag.asyncMap { userData in
-                let followIdDocument = try await usersDocumentPath.document(AuthServices.shared.userSession?.uid ?? "").collection("follows").document(userData.id ?? "").getDocument()
-                return UserData(id: userData.id.orEmpty(), email: userData.email, nickname: userData.nickname, username: userData.username, doesCurrentUserFollowsThisUser: followIdDocument.exists, bio: userData.bio)
+                let followIdDocument = try await usersDocumentPath
+                    .document(AuthServices.shared.userSession?.uid ?? "")
+                    .collection("follows")
+                    .document(userData.id ?? "")
+                    .getDocument()
+                return UserData(
+                    id: userData.id.orEmpty(),
+                    email: userData.email,
+                    nickname: userData.nickname,
+                    username: userData.username,
+                    doesCurrentUserFollowsThisUser: followIdDocument.exists,
+                    bio: userData.bio,
+                    profileImageUrl: userData.profileImageUrl
+                )
             }
-            print("DEBG: \(usersList)")
             return .success(usersList)
         } catch {
             return .error("Error in \(self): searching users failed.")
@@ -102,6 +115,47 @@ class UserServices {
             }
         } catch {
             print("Error in \(self): Unfollow request couldnt be completed.")
+            return .error(error.localizedDescription)
+        }
+    }
+    
+    func uploadProfilePicture(data: Data) async -> Response<(), ()>  {
+        do {
+            guard let userId = AuthServices.shared.userSession?.uid else { return .error("Error in \(self): User id is nil") }
+            let meta = StorageMetadata()
+            meta.contentType = "image/jpeg"
+            let fileName = "\(UUID().uuidString).jpeg"
+            let filePath = "users/\(userId)/profile-image/"
+            let storageReference = storage.reference().child(filePath + fileName)
+            let _ = try await storageReference.putDataAsync(data, metadata: meta)
+            let imageUrl = try await storageReference.downloadURL()
+            try await db.collection("users").document(userId).setData(["profileImageUrl" : imageUrl.absoluteString], merge: true)
+            await XServices.shared.updateUrlImageOnXs(newUrl: imageUrl.absoluteString)
+            return .success(())
+        } catch {
+            print("Error in \(self): Error while uploading image data to Storage.")
+            return .error(error.localizedDescription)
+        }
+        
+    }
+    
+    func updateUserData(nickname: String, bio: String) async -> Response<(), ()> {
+        do {
+            guard let userId = AuthServices.shared.userSession?.uid else {
+                return .error("Error in \(self): User id is nil")
+            }
+            try await db.collection("users").document(userId).setData(
+                [
+                    "nickname": nickname,
+                    "bio": bio
+                ],
+                merge: true)
+            
+            await XServices.shared.updateNicknameOnXs(newNickname: nickname)
+            AuthServices.shared.fetchUsersDetailedData()
+            return .success(())
+        } catch {
+            print("Error in \(self): Error while updating user data to db.")
             return .error(error.localizedDescription)
         }
     }

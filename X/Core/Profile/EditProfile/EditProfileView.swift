@@ -9,101 +9,86 @@ import SwiftUI
 
 struct EditProfileView: View {
     
-    @State private var name = ""
-    @State private var bio = ""
-    @State private var isPrivateProfile = false
-    private var isBioEmpty: Bool {
-        if bio.count == 0 {
-            return true
-        } else {
-            return false
-        }
-    }
     private let nameCharLimit = 50
     private let bioCharLimit = 250
+    
+    @State private var vm = EditProfileViewModel()
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationStack {
             GeometryReader { geo in
-                ZStack {
-                    Color(.systemGroupedBackground)
-                        .edgesIgnoringSafeArea([.bottom, .horizontal])
-                    VStack(spacing: 8) {
-                        HStack {
-                            CircularProfileImageView()
-                            Spacer()
-                        }
-                        .padding(.top, 16)
-                        .padding(.leading, 16)
-                        .padding(.bottom, 8)
-                        Divider()
+                VStack(spacing: 8) {
+                    HStack {
                         VStack {
-                            HStack() {
-                                Text("Name")
-                                    .fontWeight(.semibold)
-                                    .frame(width: geo.size.width * 0.2, alignment: .leading)
-                                    
-                                    
-                                TextField("Enter your name...", text: $name)
-                                    .onChange(of: name) {
-                                        if name.count > nameCharLimit {
-                                            name = String(name.prefix(nameCharLimit))
-                                        }
-                                    }
-                                    
+                            CircularEditingProfileImageView(url: AuthServices.shared.userDetails?.userData.profileImageUrl)
+                            if vm.viewState.pictureError {
+                                withAnimation(.easeIn) {
+                                    Text("error")
+                                        .font(.footnote)
+                                        .fontWeight(.medium)
+                                        .foregroundStyle(.red)
+                                }
                             }
-                            .padding(.horizontal)
-                            Divider()
-                            HStack(alignment: .top) {
-                                Text("Bio")
-                                    .fontWeight(.semibold)
-                                    .frame(minWidth: geo.size.width * 0.2, alignment: isBioEmpty ? .leading : .topLeading)
-                                    
-                                TextField("Bio", text: $bio, axis: .vertical)
-                                    .onChange(of: bio) {
-                                        
-                                        if bio.count > bioCharLimit {
-                                            bio = String(bio.prefix(bioCharLimit))
-                                        }
-                                    }
-                                    .frame(minHeight: 84, maxHeight: 84, alignment: .topLeading)
-                            }
-                            .padding(.horizontal)
-                            
-                            Divider()
-                            Toggle("Private profile", isOn: $isPrivateProfile)
-                                .padding(.horizontal)
-                                .fontWeight(.semibold)
-                        
                         }
-                        .padding(.bottom, 8)
-                       
+                        Spacer()
                     }
-                    
-                    .background(.white)
-                    .cornerRadius(10)
                     .padding()
-                    
-                    .font(.footnote)
-                    .navigationTitle("Edit profile")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .topBarLeading) {
-                            Button("Cancel") {
-                                
-                            }
-                            .font(.subheadline)
-                            .foregroundStyle(.black)
+                    Divider()
+                    VStack {
+                        HStack() {
+                            Text("Name")
+                                .fontWeight(.semibold)
+                                .frame(width: geo.size.width * 0.2, alignment: .leading)
+                            TextFieldWithError(hint: "Name", text: $vm.nickname, isError: vm.viewState.nameError, errorMessage: vm.viewState.nicknameErrorDescription, isRegularTextField: false, errorTextLeadingPadding: 0)
                         }
-                        ToolbarItem(placement: .topBarTrailing) {
+                        .padding(.horizontal)
+                        Divider()
+                        HStack(alignment: .top) {
+                            Text("Bio")
+                                .fontWeight(.semibold)
+                                .frame(minWidth: geo.size.width * 0.2, alignment: vm.bio.isEmpty ? .leading : .topLeading)
+                                .padding(.top, 8)
+                            TextFieldWithError(hint: "Bio", text: $vm.bio, isError: vm.viewState.bioError, errorMessage: vm.viewState.bioErrorDescription, isRegularTextField: false, errorTextLeadingPadding: 0)
+                                .frame(minHeight: 84, maxHeight: 84, alignment: .topLeading)
+                        }
+                        .padding(.horizontal)
+                        
+                        
+                    }
+                    .padding(.bottom, 8)
+                    
+                }
+                .onChange(of: vm.viewState) {
+                    if vm.viewState.success {
+                        dismiss()
+                    }
+                }
+                .font(.footnote)
+                .navigationTitle("Edit profile")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button("Cancel") {
+                            dismiss()
+                        }
+                        .font(.subheadline)
+                        .foregroundStyle(.base)
+                    }
+                    ToolbarItem(placement: .topBarTrailing) {
+                        if vm.viewState.loading {
+                            ProgressView()
+                        } else {
                             Button("Save") {
-                                
+                                vm.saveChanges()
                             }
                             .font(.subheadline)
-                            .foregroundStyle(.black)
+                            .fontWeight(.medium)
+                            .foregroundStyle(.surface)
                         }
                     }
                 }
+                .environment(vm)
             }
             
         }
@@ -114,4 +99,5 @@ struct EditProfileView: View {
 
 #Preview {
     EditProfileView()
+        .environment(EditProfileViewModel())
 }

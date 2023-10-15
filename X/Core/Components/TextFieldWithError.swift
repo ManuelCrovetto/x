@@ -15,7 +15,7 @@ struct TextFieldWithError: View {
     var errorMessage: String
     var icon: String? = nil
     var isRegularTextField: Bool = true
-    var leadingPadding: CGFloat? = nil
+    var errorTextLeadingPadding: CGFloat? = nil
     
     @ViewBuilder private var textField: some View {
         if icon != nil {
@@ -37,6 +37,7 @@ struct TextFieldWithError: View {
             .animation(.easeIn, value: text.isEmpty)
         } else {
             TextField(hint, text: $text)
+                .frame(maxWidth: .infinity)
         }
     }
     
@@ -46,6 +47,7 @@ struct TextFieldWithError: View {
                 textField.modifier(XTextFieldsModifiers())
             } else {
                 textField
+                    .modifier(XPlainTextFieldsModifiers())
             }
             
             if isError {
@@ -53,7 +55,7 @@ struct TextFieldWithError: View {
                     .font(.caption)
                     .fontWeight(.semibold)
                     .foregroundStyle(.red)
-                    .padding(.horizontal, leadingPadding ?? 32)
+                    .padding(.horizontal, errorTextLeadingPadding ?? 32)
             }
         }
         .animation(.easeIn, value: errorMessage)
@@ -61,6 +63,6 @@ struct TextFieldWithError: View {
 }
 
 #Preview {
-    TextFieldWithError(hint: "Password", text: .constant("hola"), isError: true, errorMessage: "Error", icon: "lock", isRegularTextField: true, leadingPadding: nil)
+    TextFieldWithError(hint: "Password", text: .constant("hola"), isError: true, errorMessage: "Error", icon: "lock", isRegularTextField: true, errorTextLeadingPadding: nil)
 }
 

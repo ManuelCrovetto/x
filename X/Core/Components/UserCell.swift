@@ -14,6 +14,7 @@ struct UserCell: View {
     var nickName = "Manuel"
     var userId = ""
     var isCurrentUser = false
+    var profileImageUrl = ""
     
     var followAction: (UserActions) -> ()
     
@@ -54,7 +55,7 @@ struct UserCell: View {
     var body: some View {
         VStack {
             HStack {
-                CircularProfileImageView()
+                CircularProfileImageView(url: profileImageUrl)
                 VStack(alignment: .leading) {
                     Text("@\(username)")
                         .fontWeight(.semibold)

@@ -94,7 +94,6 @@ class XServices {
     
     private func getAllXsOfFollows(followsList: [String], payload: Int, lastDocument: QueryDocumentSnapshot?) async -> XDataAndLastDocument? {
         do {
-            
             var query: Query = db.collection("xs")
             query = query.whereField("userId", in: followsList)
             query = query.limit(to: payload)
@@ -112,6 +111,34 @@ class XServices {
         } catch {
             print("Error in \(self): error during fetching Xs from follows list.")
             return nil
+        }
+    }
+    
+    func updateNicknameOnXs(newNickname: String) async {
+        do {
+            guard let uid = AuthServices.shared.userSession?.uid else {
+                print("Error in \(self): UserId is nil.")
+                return
+            }
+            try await db.collection("xs").whereField("userId", isEqualTo: uid).getDocuments().documents.forEach { document in
+                document.reference.setData(["nickName" : newNickname], merge: true)
+            }
+        } catch {
+            print("Error in \(self): updating nickname on Xs failed.")
+        }
+    }
+    
+    func updateUrlImageOnXs(newUrl: String) async {
+        do {
+            guard let uid = AuthServices.shared.userSession?.uid else {
+                print("Error in \(self): UserId is nil.")
+                return
+            }
+            try await db.collection("xs").whereField("userId", isEqualTo: uid).getDocuments().documents.forEach { document in
+                document.reference.setData(["imageUrl" : newUrl], merge: true)
+            }
+        } catch {
+            print("Error in \(self): Updating url in Xs failed.")
         }
     }
 }

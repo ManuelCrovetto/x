@@ -21,7 +21,13 @@ struct NavDrawer: View {
                 LinearGradient(gradient: Gradient(colors: [Color.white, Color.black]), startPoint: .top, endPoint: .bottom)
                     .ignoresSafeArea()
                 VStack() {
-                    NavDrawerHeader(nickName: AuthServices.shared.userDetails?.userData.nickname ?? "", username: AuthServices.shared.userDetails?.userData.username ?? "", follows: AuthServices.shared.userDetails?.followsCount ?? 0, followers: AuthServices.shared.userDetails?.followersCount ?? 0) {
+                    NavDrawerHeader(
+                        nickName: AuthServices.shared.userDetails?.userData.nickname ?? "",
+                        username: AuthServices.shared.userDetails?.userData.username ?? "",
+                        follows: AuthServices.shared.userDetails?.followsCount ?? 0,
+                        followers: AuthServices.shared.userDetails?.followersCount ?? 0,
+                        profileImageUrl: AuthServices.shared.userDetails?.userData.profileImageUrl ?? ""
+                    ) {
                         vm.signOut()
                     }
                     NavigationLink {

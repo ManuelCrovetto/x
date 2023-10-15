@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		740B08FB2AD71ABA00DC212B /* CircularEditingProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740B08FA2AD71ABA00DC212B /* CircularEditingProfileImageView.swift */; };
 		741378132ACB350E001CB1AC /* XActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741378122ACB350E001CB1AC /* XActions.swift */; };
 		741378152ACB3A20001CB1AC /* CustomIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741378142ACB3A20001CB1AC /* CustomIcon.swift */; };
 		741378172ACB3D7B001CB1AC /* StringEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741378162ACB3D7B001CB1AC /* StringEx.swift */; };
@@ -109,9 +110,11 @@
 		74E840552AC37709009D8D22 /* ViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E840542AC37709009D8D22 /* ViewEx.swift */; };
 		74E840572AC379A9009D8D22 /* AccountsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E840562AC379A9009D8D22 /* AccountsSheet.swift */; };
 		74EB95682ACCAB8300B43BBF /* SequenceEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EB95672ACCAB8300B43BBF /* SequenceEx.swift */; };
+		74F4CA772ADAB52E000502BF /* EditProfileViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F4CA762ADAB52E000502BF /* EditProfileViewState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		740B08FA2AD71ABA00DC212B /* CircularEditingProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularEditingProfileImageView.swift; sourceTree = "<group>"; };
 		741378122ACB350E001CB1AC /* XActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XActions.swift; sourceTree = "<group>"; };
 		741378142ACB3A20001CB1AC /* CustomIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomIcon.swift; sourceTree = "<group>"; };
 		741378162ACB3D7B001CB1AC /* StringEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringEx.swift; sourceTree = "<group>"; };
@@ -188,6 +191,7 @@
 		74E840542AC37709009D8D22 /* ViewEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewEx.swift; sourceTree = "<group>"; };
 		74E840562AC379A9009D8D22 /* AccountsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsSheet.swift; sourceTree = "<group>"; };
 		74EB95672ACCAB8300B43BBF /* SequenceEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceEx.swift; sourceTree = "<group>"; };
+		74F4CA762ADAB52E000502BF /* EditProfileViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -517,6 +521,7 @@
 				74E158162AC86B8E001B8117 /* VScrollView.swift */,
 				741378142ACB3A20001CB1AC /* CustomIcon.swift */,
 				74374CDC2AD0925D00B9B261 /* EmptyView.swift */,
+				740B08FA2AD71ABA00DC212B /* CircularEditingProfileImageView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -534,6 +539,7 @@
 			children = (
 				7470D66C2AB7266700C490DE /* EditProfileView.swift */,
 				7453E23C2AD5E45900988DFB /* EditProfileViewModel.swift */,
+				74F4CA762ADAB52E000502BF /* EditProfileViewState.swift */,
 			);
 			path = EditProfile;
 			sourceTree = "<group>";
@@ -766,6 +772,7 @@
 				74D59E3B2ACE9C4E00BF3082 /* XDataAndLastDocument.swift in Sources */,
 				74374CE22AD09CB400B9B261 /* ExploreViewModel.swift in Sources */,
 				7470D6532AB63EB600C490DE /* AddPostView.swift in Sources */,
+				740B08FB2AD71ABA00DC212B /* CircularEditingProfileImageView.swift in Sources */,
 				74374CDF2AD096C100B9B261 /* NavigationStates.swift in Sources */,
 				7470D6AE2AB743FF00C490DE /* RegistrationViewModel.swift in Sources */,
 				74374CED2AD1A47A00B9B261 /* ExistsEvent.swift in Sources */,
@@ -824,6 +831,7 @@
 				74E158252AC8C093001B8117 /* UserDataFireStoreEntity.swift in Sources */,
 				748061E32AC21C9200AFD38B /* ButtonWithLoader.swift in Sources */,
 				74374CE92AD0ABB200B9B261 /* UserData.swift in Sources */,
+				74F4CA772ADAB52E000502BF /* EditProfileViewState.swift in Sources */,
 				74AD89362AC77B2800E90F01 /* ForgotPasswordViewModel.swift in Sources */,
 				7470D65B2AB63F1900C490DE /* ProfileView.swift in Sources */,
 				7470D6472AB635E200C490DE /* XTabView.swift in Sources */,

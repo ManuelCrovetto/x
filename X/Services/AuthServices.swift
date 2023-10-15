@@ -57,6 +57,7 @@ import Observation
                 "username": username,
                 "bio": "",
                 "joinDate": Timestamp(date: Date.now),
+                "profileImageUrl": ""
             ]
             await setDocumentsData(document: document, dataDictionaryList: dataDictionaryList)
 
@@ -97,7 +98,8 @@ import Observation
                         nickname: userDataEntity?.nickname ?? "",
                         username: userDataEntity?.username ?? "",
                         doesCurrentUserFollowsThisUser: false,
-                        bio: userDataEntity?.bio ?? ""
+                        bio: userDataEntity?.bio ?? "",
+                        profileImageUrl: userDataEntity?.profileImageUrl ?? ""
                     )
                     let userDetailedData = UserDetailedData(
                         userData: userData,

@@ -23,9 +23,12 @@ struct ExploreView: View {
                                 username: user.username,
                                 currentlyFollows: user.doesCurrentUserFollowsThisUser,
                                 nickName: user.nickname,
-                                userId: user.id, isCurrentUser: vm.isCurrentUser(userId: user.id)) { followAction in
-                                    vm.followAction(followAction: followAction)
-                                }
+                                userId: user.id,
+                                isCurrentUser: vm.isCurrentUser(userId: user.id),
+                                profileImageUrl: user.profileImageUrl
+                            ) { followAction in
+                                vm.followAction(followAction: followAction)
+                            }
                         }
                     }
                 }

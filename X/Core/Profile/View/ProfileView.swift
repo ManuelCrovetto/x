@@ -18,14 +18,14 @@ struct ProfileView: View {
     }
     
     private var vm = ProfileViewModel()
-    
+    @State private var isEditProfilePresented = false
     private var nickName = AuthServices.shared.userDetails?.userData.nickname ?? ""
     private var username = "@\(AuthServices.shared.userDetails?.userData.username ?? "")"
     private var bio = AuthServices.shared.userDetails?.userData.bio ?? ""
     private var joined = AuthServices.shared.userDetails?.joinedDate
     private var follows = AuthServices.shared.userDetails?.followsCount ?? 0
     private var followers = AuthServices.shared.userDetails?.followersCount ?? 0
-    
+    private var profileImageUrl = AuthServices.shared.userDetails?.userData.profileImageUrl ?? ""
     
     var body: some View {
         ScrollView {
@@ -34,7 +34,7 @@ struct ProfileView: View {
                     VStack(alignment: .leading, spacing: 12) {
                         HStack {
                             VStack(alignment: .leading, spacing: 4) {
-                                CircularProfileImageView()
+                                CircularProfileImageView(url: profileImageUrl)
                                 VStack(alignment: .leading) {
                                     Text(nickName)
                                         .font(.title2)
@@ -47,7 +47,7 @@ struct ProfileView: View {
                             }
                             Spacer()
                             Button {
-                                
+                                isEditProfilePresented.toggle()
                             } label: {
                                 Text("Edit profile")
                                     .font(.subheadline)
@@ -79,6 +79,9 @@ struct ProfileView: View {
                         Followers(follows: follows, followers: followers)
                     }
                 }
+                .sheet(isPresented: $isEditProfilePresented, content: {
+                    EditProfileView()
+                })
                 .padding()
                 VStack {
                     HStack {

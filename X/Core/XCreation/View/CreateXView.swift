@@ -11,18 +11,19 @@ struct CreateXView: View {
     
     @Bindable private var vm = XCreationViewModel()
     @Environment(\.dismiss) var dismiss
+    private let profileImageUrl = AuthServices.shared.userDetails?.userData.profileImageUrl ?? ""
 
     var body: some View {
         NavigationStack {
             VStack {
                 HStack {
-                    CircularProfileImageView()
+                    CircularProfileImageView(url: profileImageUrl)
                     VStack(alignment: .leading, spacing: 4) {
                         Text(vm.userData?.nickname ?? "")
                             .font(.subheadline)
                             .fontWeight(.medium)
                             
-                        TextFieldWithError(hint: "Start X", text: $vm.xBody, isError: vm.viewState.error, errorMessage: vm.viewState.errorMessage, isRegularTextField: false, leadingPadding: 8)
+                        TextFieldWithError(hint: "Start X", text: $vm.xBody, isError: vm.viewState.error, errorMessage: vm.viewState.errorMessage, isRegularTextField: false, errorTextLeadingPadding: 8)
                             .font(.subheadline)
                             .fontWeight(.regular)
                     }
